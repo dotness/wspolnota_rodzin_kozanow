@@ -61,6 +61,7 @@
           "author": { "type": "string" },
           "slug": { "type": "string" },
           "featuredImage": { "type": "string" },
+          "isVideo": { "type": "boolean" },
           "excerpt": { "type": "string" },
           "contentHtml": { "type": "string" },
           "sourceUrl": { "type": "string", "format": "uri" },

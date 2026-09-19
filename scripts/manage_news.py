@@ -17,6 +17,8 @@ import json
 import shutil
 import argparse
 import subprocess
+import urllib.request
+import urllib.error
 from datetime import date
 from pathlib import Path
 
@@ -36,6 +38,55 @@ def slugify(text: str) -> str:
         text = text.replace(char, replacement)
     text = re.sub(r'[^\w\s-]', '', text).strip().lower()
     return re.sub(r'[-\s]+', '-', text)
+
+def parse_youtube_info(url: str):
+    if not url:
+        return None, False
+    shorts_match = re.search(r'(?:youtube\.com/shorts/)([a-zA-Z0-9_-]+)', url)
+    if shorts_match:
+        return shorts_match.group(1), True
+    std_match = re.search(r'(?:v=|youtu\.be/|embed/)([a-zA-Z0-9_-]+)', url)
+    if std_match:
+        return std_match.group(1), False
+    return None, False
+
+def download_youtube_thumbnail(video_id: str, dest_path: Path) -> bool:
+    urls = [
+        f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg",
+        f"https://img.youtube.com/vi/{video_id}/sddefault.jpg",
+        f"https://img.youtube.com/vi/{video_id}/hqdefault.jpg"
+    ]
+    for u in urls:
+        try:
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                if resp.status == 200:
+                    dest_path.parent.mkdir(parents=True, exist_ok=True)
+                    with open(dest_path, "wb") as f:
+                        f.write(resp.read())
+                    return True
+        except Exception:
+            continue
+    return False
+
+def generate_youtube_embed_html(video_id: str, title: str, is_shorts: bool, full_url: str) -> str:
+    container_class = "video-embed-container" if is_shorts else "video-embed-container is-horizontal"
+    yt_cta_text = "Otwórz w aplikacji YouTube" if is_shorts else "Obejrzyj na YouTube"
+    return (
+        f'<div class="video-embed-wrapper">\n'
+        f'  <div class="{container_class}">\n'
+        f'    <iframe src="https://www.youtube.com/embed/{video_id}?rel=0&amp;enablejsapi=1" title="{title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>\n'
+        f'  </div>\n'
+        f'</div>\n\n'
+        f'<p style="text-align: center; margin: 16px 0;">\n'
+        f'  <a href="{full_url}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #c75d2c; text-decoration: none; font-size: 0.95rem;">\n'
+        f'    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">\n'
+        f'      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>\n'
+        f'    </svg>\n'
+        f'    {yt_cta_text}\n'
+        f'  </a>\n'
+        f'</p>'
+    )
 
 def load_data():
     if not CONTENT_JSON.exists():
@@ -162,8 +213,24 @@ def add_news(args):
             })
             print(f"Copied attachment to assets/docs/{dest_att.name} ({size_kb})")
 
-    # If featured image exists and content_html doesn't contain an img, we can keep content_html clean
-    # The modal and timeline render featuredImage automatically.
+    # YouTube & Video handling
+    is_video = getattr(args, 'is_video', False)
+    yt_url = getattr(args, 'youtube_url', None)
+    if yt_url:
+        is_video = True
+        video_id, is_shorts = parse_youtube_info(yt_url)
+        if video_id:
+            # If no manual image provided, try to download YouTube thumbnail
+            if not featured_image:
+                dest_dir = NEWS_ASSETS_DIR / f"{new_id}"
+                thumb_dest = dest_dir / "cover.jpg"
+                if download_youtube_thumbnail(video_id, thumb_dest):
+                    featured_image = f"assets/news/{new_id}/cover.jpg"
+                    print(f"Downloaded YouTube thumbnail to {featured_image}")
+            # Inject embed HTML if not already present in content_html
+            if "<iframe" not in content_html:
+                embed_block = generate_youtube_embed_html(video_id, title, is_shorts, yt_url)
+                content_html = f"{content_html}\n\n{embed_block}".strip() if content_html else embed_block
 
     new_article = {
         "id": new_id,
@@ -172,6 +239,7 @@ def add_news(args):
         "author": args.author or "Wspólnota Rodzin",
         "slug": slug,
         "featuredImage": featured_image,
+        "isVideo": is_video,
         "excerpt": excerpt,
         "contentHtml": content_html,
         "sourceUrl": args.source_url or "",
@@ -252,6 +320,22 @@ def update_news(args):
             })
             print(f"Added attachment {dest_att.name} ({size_kb})")
 
+    if getattr(args, 'is_video', None) is not None:
+        target["isVideo"] = args.is_video
+    if getattr(args, 'youtube_url', None):
+        target["isVideo"] = True
+        video_id, is_shorts = parse_youtube_info(args.youtube_url)
+        if video_id:
+            if not target.get("featuredImage") and not args.image:
+                dest_dir = NEWS_ASSETS_DIR / f"{target['id']}"
+                thumb_dest = dest_dir / "cover.jpg"
+                if download_youtube_thumbnail(video_id, thumb_dest):
+                    target["featuredImage"] = f"assets/news/{target['id']}/cover.jpg"
+                    print(f"Downloaded YouTube thumbnail to {target['featuredImage']}")
+            if "<iframe" not in (target.get("contentHtml") or "") and not args.content and not args.content_file:
+                embed_block = generate_youtube_embed_html(video_id, target["title"], is_shorts, args.youtube_url)
+                target["contentHtml"] = f"{target.get('contentHtml', '')}\n\n{embed_block}".strip()
+
     # Re-sort by date descending
     news.sort(key=lambda x: str(x.get("date", "")), reverse=True)
     data["news"] = news
@@ -301,6 +385,8 @@ def main():
     p_add.add_argument("--image", help="Path to local image file to use as featured image")
     p_add.add_argument("--attachment", action="append", help="Path to attachment (e.g. PDF). Can be specified multiple times.")
     p_add.add_argument("--source-url", help="Original source URL if applicable")
+    p_add.add_argument("--youtube-url", help="YouTube video or Shorts URL (e.g. https://www.youtube.com/shorts/...)")
+    p_add.add_argument("--is-video", action="store_true", help="Mark article as a video (adds Play overlay and Wideo badge to timeline tile)")
     p_add.set_defaults(func=add_news)
 
     # update
@@ -316,6 +402,8 @@ def main():
     p_up.add_argument("--image", help="Path to new featured image")
     p_up.add_argument("--clear-image", action="store_true", help="Remove featured image")
     p_up.add_argument("--attachment", action="append", help="Add attachment(s)")
+    p_up.add_argument("--youtube-url", help="YouTube video or Shorts URL to embed")
+    p_up.add_argument("--is-video", type=lambda x: (str(x).lower() in ['true', '1', 'yes']), help="Set isVideo (true/false)")
     p_up.set_defaults(func=update_news)
 
     # remove

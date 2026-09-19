@@ -208,6 +208,7 @@
   function buildTileHtml(item, isIncremental = false) {
     const formattedDate = formatDatePl(item.date);
     const hasAttachments = item.attachments && item.attachments.length > 0;
+    const isVideo = Boolean(item.isVideo || (item.contentHtml && /<iframe/i.test(item.contentHtml)));
     const mediaSrc = item.featuredImage || 'assets/images/header/wspolnota_rodzin_header.png';
     const animClass = isIncremental ? ' fade-in' : '';
 
@@ -215,6 +216,15 @@
       <article class="news-tile${animClass}" data-article-id="${item.id}" tabindex="0" role="button" aria-label="Czytaj artykuł: ${item.title}">
         <div class="tile-media-wrap">
           <img src="${mediaSrc}" alt="${item.title}" loading="lazy" class="tile-img" />
+          ${isVideo ? `
+            <div class="tile-play-overlay" aria-hidden="true">
+              <div class="tile-play-btn" title="Odtwórz wideo">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </div>
+            </div>
+          ` : ''}
           <!-- The vertical line continuing inside the tile -->
           <div class="tile-inner-line" aria-hidden="true"></div>
           <!-- The circular node on the vertical line -->
@@ -223,12 +233,13 @@
           <div class="tile-badge-box">
             <div class="tile-meta-row">
               <span class="tile-date-pill">${formattedDate}</span>
+              ${isVideo ? '<span class="tile-video-pill">▶ Wideo</span>' : ''}
               ${hasAttachments ? `<span class="tile-pdf-pill">📄 ${item.attachments.length} ${item.attachments.length === 1 ? 'dokument' : (item.attachments.length < 5 ? 'dokumenty' : 'dokumentów')}</span>` : ''}
             </div>
             <h3 class="tile-title">${item.title}</h3>
             <div class="tile-action-row">
               <span class="tile-action-link">
-                Czytaj całość
+                ${isVideo ? 'Obejrzyj nagranie' : 'Czytaj całość'}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
@@ -412,9 +423,9 @@
     const formattedDate = formatDatePl(article.date);
     const hasAttachments = article.attachments && article.attachments.length > 0;
 
-    // Check if the article's body HTML already contains an image to prevent duplication
-    const bodyHasImage = Boolean(article.contentHtml && /<img[^>]+src=/i.test(article.contentHtml));
-    const showFeaturedFigure = Boolean(article.featuredImage && !bodyHasImage);
+    // Check if the article's body HTML already contains an image or video to prevent duplicate figure
+    const bodyHasMedia = Boolean(article.contentHtml && /(<img[^>]+src=|<iframe[^>]+src=)/i.test(article.contentHtml));
+    const showFeaturedFigure = Boolean(article.featuredImage && !bodyHasMedia);
 
     modalBody.innerHTML = `
       <header class="modal-article-header">
@@ -484,6 +495,33 @@
     const modal = document.getElementById('article-modal');
     if (!modal) return;
 
+    // 1. Force-stop any active iframes (YouTube, videos, embeds)
+    const iframes = modal.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      try {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+      } catch (e) {}
+      // Clear src to about:blank and remove from DOM so audio stream terminates immediately
+      iframe.src = 'about:blank';
+      iframe.remove();
+    });
+
+    // 2. Pause any native HTML5 video/audio elements if present
+    const mediaElements = modal.querySelectorAll('video, audio');
+    mediaElements.forEach(media => {
+      try {
+        media.pause();
+        media.currentTime = 0;
+      } catch (e) {}
+    });
+
+    // 3. Clear modal body DOM completely so no hidden background audio/video can linger
+    const modalBody = document.getElementById('modal-body');
+    if (modalBody) {
+      modalBody.innerHTML = '';
+    }
+
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     unlockBodyScroll();
@@ -522,15 +560,35 @@
     const modal = document.getElementById('article-modal');
     const closeBtn = document.getElementById('modal-close-btn');
     const backdrop = document.getElementById('modal-backdrop');
+    const dialog = modal ? modal.querySelector('.modal-dialog') : null;
 
     if (closeBtn) closeBtn.addEventListener('click', closeArticleModal);
     if (backdrop) {
       backdrop.addEventListener('click', closeArticleModal);
       backdrop.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
     }
-    const topBar = document.querySelector('.modal-top-bar');
-    if (topBar) {
-      topBar.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+    // Touch swipe down gesture to dismiss modal on mobile devices
+    if (dialog) {
+      let touchStartY = 0;
+      let touchStartX = 0;
+
+      dialog.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      dialog.addEventListener('touchend', (e) => {
+        const diffY = e.changedTouches[0].clientY - touchStartY;
+        const diffX = Math.abs(e.changedTouches[0].clientX - touchStartX);
+        const scrollContainer = document.getElementById('modal-body');
+        const isAtTop = !scrollContainer || scrollContainer.scrollTop <= 10;
+
+        // Dismiss if swiped down by > 80px when scroll is at top and swipe is primarily vertical
+        if (diffY > 80 && diffX < diffY && isAtTop) {
+          closeArticleModal();
+        }
+      }, { passive: true });
     }
 
     document.addEventListener('keydown', (e) => {

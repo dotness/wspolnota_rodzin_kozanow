@@ -429,6 +429,98 @@
   border-radius: var(--radius-pill);
 }
 
+.tile-video-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #dc2626;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Play button overlay in center of video tile */
+.tile-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.12);
+  transition: background 0.3s ease;
+}
+
+.news-tile:hover .tile-play-overlay {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.tile-play-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #c75d2c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, color 0.2s ease;
+}
+
+.tile-play-btn svg {
+  margin-left: 3px;
+}
+
+.news-tile:hover .tile-play-btn {
+  transform: scale(1.1);
+  background: #ffffff;
+  color: #dc2626;
+}
+
+/* Embedded Video Player in Modal */
+.video-embed-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0 22px 0;
+  width: 100%;
+}
+
+.video-embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 325px;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: #000000;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+}
+
+.video-embed-container.is-horizontal {
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+}
+
+.video-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  margin: 0 !important;
+  display: block;
+}
+
 .tile-title {
   font-size: 0.98rem;
   font-weight: 700;
@@ -621,8 +713,7 @@
 
 .modal-article-prose img,
 .modal-article-prose figure,
-.modal-article-prose object,
-.modal-article-prose iframe {
+.modal-article-prose object {
   max-width: 100% !important;
   height: auto !important;
   display: block;

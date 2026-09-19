@@ -48,9 +48,22 @@
   ],
   "news": [
     {
+      "id": 19374,
+      "title": "Jak misjonarze cyfrowi budują realną wspólnotę w sieci",
+      "date": "2026-09-19",
+      "author": "Wspólnota Rodzin",
+      "slug": "jak-misjonarze-cyfrowi-buduja-realna-wspolnote-w-sieci",
+      "featuredImage": "assets/news/19374/misjonarze-cyfrowi-cover.jpg",
+      "isVideo": true,
+      "excerpt": "Krótki materiał wideo: Jak misjonarze cyfrowi budują realną, autentyczną wspólnotę w sieci. Obejrzyj nagranie bezpośrednio na stronie!",
+      "contentHtml": "<p class=\"article-lead\">\n  W dzisiejszym świecie obecność w sieci to nie tylko przestrzeń cyfrowa, ale przede wszystkim miejsce prawdziwego spotkania i ewangelizacji. Zapraszamy do obejrzenia krótkiego materiału wideo o tym, jak jako misjonarze cyfrowi budujemy żywą, autentyczną wspólnotę wiary i serdecznych relacji.\n</p>\n\n<div class=\"video-embed-wrapper\">\n  <div class=\"video-embed-container\">\n    <iframe src=\"https://www.youtube.com/embed/_xPMmn8meFM?rel=0&amp;enablejsapi=1\" title=\"Jak misjonarze cyfrowi budują realną wspólnotę w sieci\" loading=\"lazy\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n  </div>\n</div>\n\n<p style=\"text-align: center; margin: 16px 0;\">\n  <a href=\"https://www.youtube.com/shorts/_xPMmn8meFM\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #c75d2c; text-decoration: none; font-size: 0.95rem;\">\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\">\n      <path d=\"M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\"/>\n    </svg>\n    Otwórz w aplikacji YouTube\n  </a>\n</p>",
+      "sourceUrl": "",
+      "attachments": []
+    },
+    {
       "id": 19373,
       "title": "Terminy spotkań Wspólnoty Rodzin w październiku: 9 i 23 października 2026 r.",
-      "date": "2026-09-20",
+      "date": "2026-09-19",
       "author": "Wspólnota Rodzin",
       "slug": "terminy-spotkan-wspolnoty-rodzin-w-pazdzierniku-9-i-23-pazdziernika-2026-r",
       "featuredImage": "assets/news/19373/spotkanie-pazdziernik-tile.png",
