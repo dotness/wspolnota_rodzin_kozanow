@@ -231,8 +231,6 @@ def add_news(args):
             if "<iframe" not in content_html:
                 embed_block = generate_youtube_embed_html(video_id, title, is_shorts, yt_url)
                 content_html = f"{content_html}\n\n{embed_block}".strip() if content_html else embed_block
-            if not args.source_url:
-                args.source_url = yt_url
 
     new_article = {
         "id": new_id,
@@ -337,8 +335,6 @@ def update_news(args):
             if "<iframe" not in (target.get("contentHtml") or "") and not args.content and not args.content_file:
                 embed_block = generate_youtube_embed_html(video_id, target["title"], is_shorts, args.youtube_url)
                 target["contentHtml"] = f"{target.get('contentHtml', '')}\n\n{embed_block}".strip()
-            if not target.get("sourceUrl"):
-                target["sourceUrl"] = args.youtube_url
 
     # Re-sort by date descending
     news.sort(key=lambda x: str(x.get("date", "")), reverse=True)
