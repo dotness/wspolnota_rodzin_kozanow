@@ -208,6 +208,7 @@
   function buildTileHtml(item, isIncremental = false) {
     const formattedDate = formatDatePl(item.date);
     const hasAttachments = item.attachments && item.attachments.length > 0;
+    const isVideo = Boolean(item.isVideo || (item.contentHtml && /<iframe/i.test(item.contentHtml)));
     const mediaSrc = item.featuredImage || 'assets/images/header/wspolnota_rodzin_header.png';
     const animClass = isIncremental ? ' fade-in' : '';
 
@@ -215,6 +216,15 @@
       <article class="news-tile${animClass}" data-article-id="${item.id}" tabindex="0" role="button" aria-label="Czytaj artykuł: ${item.title}">
         <div class="tile-media-wrap">
           <img src="${mediaSrc}" alt="${item.title}" loading="lazy" class="tile-img" />
+          ${isVideo ? `
+            <div class="tile-play-overlay" aria-hidden="true">
+              <div class="tile-play-btn" title="Odtwórz wideo">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </div>
+            </div>
+          ` : ''}
           <!-- The vertical line continuing inside the tile -->
           <div class="tile-inner-line" aria-hidden="true"></div>
           <!-- The circular node on the vertical line -->
@@ -223,12 +233,13 @@
           <div class="tile-badge-box">
             <div class="tile-meta-row">
               <span class="tile-date-pill">${formattedDate}</span>
+              ${isVideo ? '<span class="tile-video-pill">▶ Wideo</span>' : ''}
               ${hasAttachments ? `<span class="tile-pdf-pill">📄 ${item.attachments.length} ${item.attachments.length === 1 ? 'dokument' : (item.attachments.length < 5 ? 'dokumenty' : 'dokumentów')}</span>` : ''}
             </div>
             <h3 class="tile-title">${item.title}</h3>
             <div class="tile-action-row">
               <span class="tile-action-link">
-                Czytaj całość
+                ${isVideo ? 'Obejrzyj nagranie' : 'Czytaj całość'}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
@@ -412,9 +423,9 @@
     const formattedDate = formatDatePl(article.date);
     const hasAttachments = article.attachments && article.attachments.length > 0;
 
-    // Check if the article's body HTML already contains an image to prevent duplication
-    const bodyHasImage = Boolean(article.contentHtml && /<img[^>]+src=/i.test(article.contentHtml));
-    const showFeaturedFigure = Boolean(article.featuredImage && !bodyHasImage);
+    // Check if the article's body HTML already contains an image or video to prevent duplicate figure
+    const bodyHasMedia = Boolean(article.contentHtml && /(<img[^>]+src=|<iframe[^>]+src=)/i.test(article.contentHtml));
+    const showFeaturedFigure = Boolean(article.featuredImage && !bodyHasMedia);
 
     modalBody.innerHTML = `
       <header class="modal-article-header">
@@ -483,6 +494,12 @@
   function closeArticleModal() {
     const modal = document.getElementById('article-modal');
     if (!modal) return;
+
+    // Reset iframe to stop audio/video playback when modal is closed
+    const iframes = modal.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      iframe.src = iframe.src;
+    });
 
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
