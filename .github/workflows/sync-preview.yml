@@ -1,0 +1,38 @@
+name: Sync Preview Environment
+
+on:
+  push:
+    branches:
+      - preview
+
+permissions:
+  contents: read
+
+jobs:
+  sync-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          fetch-depth: 0
+
+      - name: Setup SSH Key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PREVIEW_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Configure Preview CNAME and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          echo "preview.wspolnotarodzin.pl" > CNAME
+          git add CNAME
+          git commit -m "Update CNAME for preview environment" || echo "CNAME unchanged"
+          git remote add target git@github.com:dotness/wspolnota_rodzin_preview.git
+          git push -f target HEAD:main
