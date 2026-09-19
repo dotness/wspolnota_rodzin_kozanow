@@ -8,12 +8,13 @@ window.COMMUNITY_DATA = {
     "motto": "Bo rodzina to wielki dar",
     "headerImage": "assets/images/header/wspolnota_rodzin_header.png",
     "nextMeeting": {
-      "title": "Spotkanie u św. Jadwigi – Wspólnota Rodzin",
-      "dateText": "Niedziela, 20 września 2026 r., po Mszy św. o godz. 10:30",
+      "title": "Spotkanie Wspólnoty Rodzin – 9 października 2026 r.",
+      "dateText": "Piątek, 9 października 2026 r., po Mszy św. o godz. 18:00",
       "locationText": "Salka parafialna pod kościołem św. Jadwigi",
-      "image": "assets/news/01/IMG-20260913-WA0001.jpg",
-      "description": "Serdecznie zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na modlitwę, rozmowę, wspólne wykonanie dużego różańca oraz mały poczęstunek.",
-      "contentHtml": "<p><strong>Zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na spotkanie Wspólnoty Rodzin u św. Jadwigi!</strong></p><p>Spotykamy się w niedzielę, 20 września, bezpośrednio po Mszy świętej o godzinie 10:30 w salce parafialnej pod kościołem.</p><h4>W programie spotkania:</h4><ul><li>Krótka katecheza i wspólna modlitwa</li><li>Wspólne wykonanie dużego różańca (będzie nam towarzyszył podczas nabożeństw różańcowych w październiku)</li><li>Rozmowy, wzajemne wsparcie rodziców i mały poczęstunek</li></ul><p>Rodzice, dzieci i dziadkowie są bardzo mile widziani!</p>"
+      "image": "assets/images/meeting/spotkanie-pazdziernik-detail.png",
+      "badgeText": "09.10",
+      "description": "Serdecznie zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na pierwsze jesienne spotkanie Wspólnoty Rodzin. W programie modlitwa, rozmowa, katecheza oraz poczęstunek.",
+      "contentHtml": "<p>Drogie Rodziny! Serdecznie zapraszamy na spotkanie Wspólnoty Rodzin w piątek 9 października 2026 r. Rozpoczynamy Mszą Świętą o godz. 18:00 w kościele św. Jadwigi Śląskiej na Kozanowie, a następnie przechodzimy do salki parafialnej.</p><h4>W programie:</h4><ul><li>Wspólna modlitwa i chwila wyciszenia</li><li>Konferencja i wartościowe rozmowy dla małżonków</li><li>Zabawy i animacje dla dzieci</li><li>Ciepła herbata, kawa i poczęstunek</li></ul><p>Kolejne spotkanie zaplanowane jest na piątek, 23 października 2026 r. Serdecznie zapraszamy!</p>"
     }
   },
   "pillars": [
@@ -47,6 +48,18 @@ window.COMMUNITY_DATA = {
     }
   ],
   "news": [
+    {
+      "id": 19373,
+      "title": "Terminy spotkań Wspólnoty Rodzin w październiku: 9 i 23 października 2026 r.",
+      "date": "2026-09-20",
+      "author": "Wspólnota Rodzin",
+      "slug": "terminy-spotkan-wspolnoty-rodzin-w-pazdzierniku-9-i-23-pazdziernika-2026-r",
+      "featuredImage": "assets/news/19373/spotkanie-pazdziernik-tile.png",
+      "excerpt": "Drogie Rodziny, Małżeństwa oraz wszyscy Przyjaciele i Sympatycy naszej Wspólnoty!\n\n\n\n  Z radością informujemy o kolejnych terminach naszych ...",
+      "contentHtml": "<p class=\"article-lead\">\n  Drogie Rodziny, Małżeństwa oraz wszyscy Przyjaciele i Sympatycy naszej Wspólnoty!\n</p>\n\n<p>\n  Z radością informujemy o kolejnych terminach naszych wspólnych spotkań formacyjnych i integracyjnych w październiku 2026 roku.\n  Serdecznie zapraszamy do wspólnego spędzenia czasu, modlitwy oraz budowania serdecznych więzi w duchu wiary i chrześcijańskiej miłości.\n</p>\n\n<div class=\"meeting-schedule-box\" style=\"background: rgba(199, 93, 44, 0.06); border-left: 4px solid #c75d2c; padding: 14px 18px; margin: 18px 0; border-radius: 0 8px 8px 0;\">\n  <h4 style=\"margin: 0 0 10px 0; color: #2c2420; font-size: 1.05rem;\">Najbliższe terminy spotkań Wspólnoty:</h4>\n  <ul style=\"margin: 0; padding-left: 20px; line-height: 1.6;\">\n    <li><strong>Piątek, 9 października 2026 r.</strong> – po Mszy Świętej o godz. 18:00 (salka parafialna).</li>\n    <li><strong>Piątek, 23 października 2026 r.</strong> – po Mszy Świętej o godz. 18:00 (salka parafialna).</li>\n  </ul>\n</div>\n\n<p>\n  Spotkania rozpoczynają się uczestnictwem we Mszy Świętej, po której przechodzimy do salki parafialnej pod kościołem św. Jadwigi Śląskiej na Kozanowie.\n</p>\n\n<h4>W programie każdego ze spotkań:</h4>\n<ul>\n  <li>Wspólna modlitwa i chwila wyciszenia,</li>\n  <li>Wartościowa konferencja i dyskusja w gronie małżonków i rodziców,</li>\n  <li>Zorganizowana opieka, zabawy i animacje dla dzieci,</li>\n  <li>Serdeczny poczęstunek przy kawie, herbacie i domowych wypiekach – czas na swobodne rozmowy i wzajemne wsparcie.</li>\n</ul>\n\n<p>\n  Zapraszamy z całego serca zarówno rodziny, które są z nami od lat, jak i te, które chciałyby nas poznać po raz pierwszy.\n  Bo rodzina to wielki dar!\n</p>\n\n<figure class=\"modal-featured-figure\" style=\"margin-top: 24px;\">\n  <img src=\"assets/news/19373/spotkanie-pazdziernik-detail.png\" alt=\"Wspólnota Rodzin – Zaproszenie na spotkania w październiku\" class=\"modal-featured-img\" />\n</figure>\n",
+      "sourceUrl": "",
+      "attachments": []
+    },
     {
       "id": 19372,
       "title": "Spotkania u św. Jadwigi",

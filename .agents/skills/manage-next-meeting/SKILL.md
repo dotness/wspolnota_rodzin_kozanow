@@ -11,6 +11,11 @@ This skill provides step-by-step instructions and automated CLI tools to manage 
 ## Overview
 
 - **Location on Page**: Positioned directly underneath the top headline banner (`headline-poster-card`).
+- **Programmatic Headline Overlay**:
+  - The top headline banner (`headline-poster-card`) has an automatic text overlay (`.headline-meeting-date`) positioned directly underneath the "NASTĘPNE SPOTKANIE" pillar on the poster image.
+  - It renders the short date (e.g. `09.10`) matching the poster's typography and palette without modifying the underlying banner image file.
+  - If a meeting is scheduled, it displays `badgeText` (or auto-derived date `DD.MM`).
+  - If no meeting is scheduled (`nextMeeting: null`), both the badge overlay and the highlight card are cleanly hidden.
 - **Visual Behavior**:
   - Displays a warm card with date, location, and an interactive meeting poster thumbnail.
   - Clicking the image preview opens a full modal containing the poster and meeting agenda (`contentHtml`).
@@ -58,6 +63,7 @@ python3 scripts/manage_meeting.py update \
 
 #### Parameters:
 - `--date` (Required if configuring a new meeting): Human-readable date and time text.
+- `--badge` (Optional): Short date text displayed on the header banner under 'NASTĘPNE SPOTKANIE' (e.g. `"09.10"`). If omitted, automatically derived from `--date`.
 - `--title` (Optional): Custom meeting title (defaults to `"Spotkanie u św. Jadwigi – Wspólnota Rodzin"`).
 - `--location` (Optional): Meeting venue (defaults to `"Salka parafialna pod kościołem św. Jadwigi"`).
 - `--image` (Optional): Path to poster image file. The script copies it into `assets/images/meeting/` and updates the link.

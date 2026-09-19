@@ -91,17 +91,26 @@
    */
   function renderMeeting(config) {
     const meetingCard = document.getElementById('meeting-card');
+    const headlineDateBadge = document.getElementById('headline-meeting-date');
     if (!meetingCard) return;
 
     if (!config || !config.nextMeeting) {
       meetingCard.style.display = 'none';
       meetingCard.innerHTML = '';
+      if (headlineDateBadge) headlineDateBadge.style.display = 'none';
       return;
     }
 
     meetingCard.style.display = '';
     const nm = config.nextMeeting;
     const hasImage = Boolean(nm.image);
+
+    if (headlineDateBadge) {
+      const badgeText = nm.badgeText || (nm.dateText ? (nm.dateText.match(/(\d{1,2}\.\d{2})/) ? nm.dateText.match(/(\d{1,2}\.\d{2})/)[1] : '') : '') || '09.10';
+      headlineDateBadge.textContent = badgeText;
+      headlineDateBadge.style.display = '';
+      headlineDateBadge.setAttribute('aria-label', `Data następnego spotkania: ${badgeText}`);
+    }
 
     meetingCard.innerHTML = `
       <div class="meeting-highlight-badge">Najbliższe Spotkanie Wspólnoty</div>

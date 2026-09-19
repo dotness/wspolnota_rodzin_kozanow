@@ -23,6 +23,8 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-surface-dim);
   box-sizing: border-box;
+  position: relative;
+  container-type: inline-size;
 }
 
 .headline-poster-img {
@@ -31,6 +33,24 @@
   height: auto;
   display: block;
   object-fit: cover;
+}
+
+.headline-meeting-date {
+  position: absolute;
+  left: 80.25%;
+  top: 86.7%;
+  transform: translate(-50%, -50%);
+  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.72rem, 2.7cqi, 1.25rem);
+  letter-spacing: 0.04em;
+  color: #2b1f1a;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 /* Meeting Highlight Card under Poster */

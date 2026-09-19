@@ -15,11 +15,29 @@ import json
 import shutil
 import argparse
 import subprocess
+import re
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 CONTENT_JSON = ROOT_DIR / "data" / "content.json"
 MEETING_ASSETS_DIR = ROOT_DIR / "assets" / "images" / "meeting"
+
+MONTH_MAP = {
+    "stycznia": "01", "lutego": "02", "marca": "03", "kwietnia": "04",
+    "maja": "05", "czerwca": "06", "lipca": "07", "sierpnia": "08",
+    "września": "09", "października": "10", "listopada": "11", "grudnia": "12"
+}
+
+def derive_badge_text(date_text):
+    if not date_text:
+        return ""
+    m = re.search(r'(\d{1,2})\s*([a-ząćęłńóśźż]+)', date_text.lower())
+    if m:
+        day = int(m.group(1))
+        month_word = m.group(2)
+        if month_word in MONTH_MAP:
+            return f"{day:02d}.{MONTH_MAP[month_word]}"
+    return ""
 
 def load_data():
     if not CONTENT_JSON.exists():
@@ -52,6 +70,7 @@ def show_meeting(args):
     print("=" * 60)
     print(f"Title:       {nm.get('title', 'N/A')}")
     print(f"Date:        {nm.get('dateText', 'N/A')}")
+    print(f"Badge Date:  {nm.get('badgeText', 'N/A')}")
     print(f"Location:    {nm.get('locationText', 'N/A')}")
     print(f"Image:       {nm.get('image', 'None (no poster image)')}")
     print(f"Description: {nm.get('description', '')}")
@@ -105,11 +124,17 @@ def update_meeting(args):
         else:
             content_html = raw_c
 
+    # Badge text for header banner overlay
+    badge_text = args.badge.strip() if getattr(args, "badge", None) else existing.get("badgeText")
+    if not badge_text:
+        badge_text = derive_badge_text(date_text)
+
     cfg["nextMeeting"] = {
         "title": title,
         "dateText": date_text,
         "locationText": location_text,
         "image": image_path,
+        "badgeText": badge_text,
         "description": desc,
         "contentHtml": content_html
     }
@@ -118,6 +143,7 @@ def update_meeting(args):
     print(f"\n✅ Next meeting updated successfully!")
     print(f"   Title: {title}")
     print(f"   Date:  {date_text}")
+    print(f"   Badge: {badge_text}")
     print(f"   Place: {location_text}")
     if image_path:
         print(f"   Image: {image_path}")
@@ -147,6 +173,7 @@ def main():
     p_up.add_argument("--date", help="Date & time description (e.g. 'Niedziela, 27 września 2026 r., po Mszy św. o godz. 10:30')")
     p_up.add_argument("--title", help="Title of the meeting announcement")
     p_up.add_argument("--location", help="Location (defaults to 'Salka parafialna pod kościołem św. Jadwigi')")
+    p_up.add_argument("--badge", help="Short badge date for header banner overlay (e.g. '09.10')")
     p_up.add_argument("--image", help="Poster image file or path")
     p_up.add_argument("--clear-image", action="store_true", help="Remove existing poster image")
     p_up.add_argument("--description", help="Short summary / invitation line")
