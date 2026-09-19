@@ -7,6 +7,11 @@ headline_reference.png
 *.tar.gz
 site_bundle.tar.gz
 
+# Local and environment scripts/keys
+*pi*.py
+*ovh*.py
+*.keys
+
 # Python
 __pycache__/
 *.py[cod]
