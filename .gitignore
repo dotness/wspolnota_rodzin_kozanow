@@ -1,0 +1,21 @@
+# Reference materials excluded from git
+website_reference/
+news_reference/
+headline_reference.png
+
+# Archives and bundles
+*.tar.gz
+site_bundle.tar.gz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp

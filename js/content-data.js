@@ -1,0 +1,184 @@
+// Auto-generated fallback data for offline file:// protocol
+window.COMMUNITY_DATA = {
+  "siteConfig": {
+    "siteTitle": "Wspólnota Rodzin – Kozanów",
+    "parishName": "Parafia pw. św. Jadwigi Śląskiej",
+    "location": "Wrocław – Kozanów",
+    "slogan": "Razem w wierze, w miłości, na co dzień",
+    "motto": "Bo rodzina to wielki dar",
+    "headerImage": "assets/images/header/wspolnota_rodzin_header.png",
+    "nextMeeting": {
+      "title": "Spotkanie u św. Jadwigi – Wspólnota Rodzin",
+      "dateText": "Niedziela, 20 września 2026 r., po Mszy św. o godz. 10:30",
+      "locationText": "Salka parafialna pod kościołem św. Jadwigi",
+      "image": "assets/news/01/IMG-20260913-WA0001.jpg",
+      "description": "Serdecznie zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na modlitwę, rozmowę, wspólne wykonanie dużego różańca oraz mały poczęstunek.",
+      "contentHtml": "<p><strong>Zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na spotkanie Wspólnoty Rodzin u św. Jadwigi!</strong></p><p>Spotykamy się w niedzielę, 20 września, bezpośrednio po Mszy świętej o godzinie 10:30 w salce parafialnej pod kościołem.</p><h4>W programie spotkania:</h4><ul><li>Krótka katecheza i wspólna modlitwa</li><li>Wspólne wykonanie dużego różańca (będzie nam towarzyszył podczas nabożeństw różańcowych w październiku)</li><li>Rozmowy, wzajemne wsparcie rodziców i mały poczęstunek</li></ul><p>Rodzice, dzieci i dziadkowie są bardzo mile widziani!</p>"
+    }
+  },
+  "pillars": [
+    {
+      "id": "spotkania",
+      "title": "WSPÓLNE SPOTKANIA",
+      "subtitle": "modlitwa • rozmowa • wsparcie",
+      "description": "Budujemy wspólnotę opartą na zaufaniu i chrześcijańskich wartościach. Razem modlimy się, rozmawiamy o wyzwaniach codzienności i wzajemnie wspieramy.",
+      "icon": "users"
+    },
+    {
+      "id": "modlitwa",
+      "title": "RODZINNA MODLITWA",
+      "subtitle": "w parafii i w domach",
+      "description": "Odkrywamy głębię modlitwy we wspólnocie małżeńskiej i rodzinnej. Uczymy się czerpać siłę z Eucharystii i Słowa Bożego na każdy dzień.",
+      "icon": "heart"
+    },
+    {
+      "id": "relacje",
+      "title": "PRZYJAŹNIE I RELACJE",
+      "subtitle": "z innymi rodzinami",
+      "description": "Dajemy dzieciom bezpieczne środowisko rówieśnicze, a rodzicom przestrzeń do budowania głębokich, wartościowych przyjaźni.",
+      "icon": "people"
+    },
+    {
+      "id": "termin",
+      "title": "NASTĘPNE SPOTKANIE",
+      "subtitle": "Niedziela, 20 września, 16:00",
+      "description": "Nasze spotkania są otwarte dla każdego. Przyjdź i zobacz – czekamy na Ciebie i Twoją rodzinę w salce parafialnej!",
+      "icon": "calendar"
+    }
+  ],
+  "news": [
+    {
+      "id": 19372,
+      "title": "Spotkania u św. Jadwigi",
+      "date": "2026-09-14",
+      "author": "Piotr",
+      "slug": "spotkania-u-sw-jadwigi",
+      "featuredImage": "assets/news/01/IMG-20260913-WA0001.jpg",
+      "excerpt": "",
+      "contentHtml": "\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"723\" height=\"1024\" src=\"assets/news/01/IMG-20260913-WA0001-723x1024.jpg\" alt=\"\" class=\"wp-image-19373\" srcset=\"assets/news/01/IMG-20260913-WA0001-723x1024.jpg 723w, assets/news/01/IMG-20260913-WA0001.jpg 1054w\" sizes=\"auto, (max-width: 723px) 100vw, 723px\" /></figure>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/spotkania-u-sw-jadwigi/",
+      "attachments": []
+    },
+    {
+      "id": 19366,
+      "title": "Adoracja Najświętszego Sakramentu w III piątek 18 września 2026r.",
+      "date": "2026-09-12",
+      "author": "Piotr",
+      "slug": "adoracja-najswietszego-sakramentu-w-iii-piatek-18-wrzesnia-2026r",
+      "featuredImage": "assets/news/02/IMG-20260912-WA0002.jpg",
+      "excerpt": "",
+      "contentHtml": "\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"724\" height=\"1024\" src=\"assets/news/02/IMG-20260912-WA0002-724x1024.jpg\" alt=\"\" class=\"wp-image-19367\" srcset=\"assets/news/02/IMG-20260912-WA0002-724x1024.jpg 724w, assets/news/02/IMG-20260912-WA0002.jpg 1414w\" sizes=\"auto, (max-width: 724px) 100vw, 724px\" /></figure>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/adoracja-najswietszego-sakramentu-w-iii-piatek-18-wrzesnia-2026r/",
+      "attachments": []
+    },
+    {
+      "id": 19347,
+      "title": "Oświadczenie KEP i Apel Rady Biskupów",
+      "date": "2026-09-05",
+      "author": "Bogusław",
+      "slug": "oswiadczenie-kep-i-apel-rady-biskupow",
+      "featuredImage": "assets/news/03/11logo-episkopat.jpg",
+      "excerpt": "Drodzy Parafianie, zapraszamy do zapoznania się z dwoma dokumentami: Oświadczeniem prezydium Konferencji Episkopatu Polski „Młody człowiek zasługuje na więcej” oraz apelem Rady Stałej Biskupów w sprawie pojednania polsko-ukraińskiego.",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">Drodzy Parafianie, zapraszamy do zapoznania się z dwoma dokumentami: Oświadczeniem prezydium Konferencji Episkopatu Polski „Młody człowiek zasługuje na więcej” oraz apelem Rady Stałej Biskupów w sprawie pojednania polsko-ukraińskiego.</p>\n\n\n\n<div data-wp-interactive=\"core/file\" class=\"wp-block-file\"><object data-wp-bind--hidden=\"!state.hasPdfPreview\" hidden class=\"wp-block-file__embed\" data=\"assets/docs/Oswidczenie-KEP.pdf\" type=\"application/pdf\" style=\"width:100%;height:600px\" aria-label=\"Osadzone z Oświdczenie KEP.\"></object><a id=\"wp-block-file--media-654ebb66-b47f-47d6-9ae1-fd9c1e00f54e\" href=\"assets/docs/Oswidczenie-KEP.pdf\">Oświdczenie KEP</a><a href=\"assets/docs/Oswidczenie-KEP.pdf\" class=\"wp-block-file__button wp-element-button\" download aria-describedby=\"wp-block-file--media-654ebb66-b47f-47d6-9ae1-fd9c1e00f54e\">Pobierz</a></div>\n\n\n\n<div data-wp-interactive=\"core/file\" class=\"wp-block-file\"><object data-wp-bind--hidden=\"!state.hasPdfPreview\" hidden class=\"wp-block-file__embed\" data=\"assets/docs/Apel-Rady.pdf\" type=\"application/pdf\" style=\"width:100%;height:600px\" aria-label=\"Osadzone z Apel Rady.\"></object><a id=\"wp-block-file--media-9fd27f01-59d1-4e3c-b66c-10d301c45bb8\" href=\"assets/docs/Apel-Rady.pdf\">Apel Rady</a><a href=\"assets/docs/Apel-Rady.pdf\" class=\"wp-block-file__button wp-element-button\" download aria-describedby=\"wp-block-file--media-9fd27f01-59d1-4e3c-b66c-10d301c45bb8\">Pobierz</a></div>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/oswiadczenie-kep-i-apel-rady-biskupow/",
+      "attachments": [
+        {
+          "name": "Oświadczenie KEP – Młody człowiek zasługuje na więcej",
+          "path": "assets/docs/Oswidczenie-KEP.pdf",
+          "type": "pdf",
+          "sizeText": "249 KB"
+        },
+        {
+          "name": "Apel Rady Stałej Biskupów w sprawie pojednania",
+          "path": "assets/docs/Apel-Rady.pdf",
+          "type": "pdf",
+          "sizeText": "144 KB"
+        }
+      ]
+    },
+    {
+      "id": 19334,
+      "title": "Całonocne czuwanie Wspólnot „OGIEŃ DWÓCH SERC”(z transmisją na żywo)",
+      "date": "2026-08-30",
+      "author": "Piotr",
+      "slug": "calonocne-czuwanie-ogien-dwoch-serc",
+      "featuredImage": "assets/news/04/IMG-20260830-WA0002.jpg",
+      "excerpt": "– Gorąco zapraszamy w najbliższą noc z piątku na sobotę tj. z 4 na 5 września, aby oddać cześć Najświętszemu Sercu Pana Jezusa i Niepokalanemu Sercu Maryi🙏– ⁠Rozpoczęcie czuwania Mszą Świętą w piątek o g. 18:00, a zakończenie Mszą Świętą o g. 7:00 w sobotę (wcześniej od godziny 6:00 różaniec pierwszosobotni)🙏– ⁠GORĄCO ZAPRASZAMY!!! 🤩🙏🙏🙏 link…",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">&#8211; Gorąco zapraszamy w najbliższą noc z piątku na sobotę tj. z 4 na 5 września, aby oddać cześć Najświętszemu Sercu Pana Jezusa i Niepokalanemu Sercu Maryi🙏<br>&#8211; ⁠Rozpoczęcie czuwania Mszą Świętą w piątek o g. 18:00, a zakończenie Mszą Świętą o g. 7:00 w sobotę (wcześniej od godziny 6:00 różaniec pierwszosobotni)🙏<br>&#8211; ⁠GORĄCO ZAPRASZAMY!!! 🤩🙏🙏🙏 </p>\n\n\n\n<p class=\"wp-block-paragraph\">link do transmisji na żywo: <a href=\"https://www.youtube.com/watch?v=zDTeeLmL16w\" data-type=\"link\" data-id=\"https://www.youtube.com/watch?v=zDTeeLmL16w\">https://www.youtube.com/watch?v=zDTeeLmL16w</a></p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"724\" height=\"1024\" src=\"assets/news/04/IMG-20260830-WA0002-724x1024.jpg\" alt=\"\" class=\"wp-image-19332\" srcset=\"assets/news/04/IMG-20260830-WA0002-724x1024.jpg 724w, assets/news/04/IMG-20260830-WA0002.jpg 1132w\" sizes=\"auto, (max-width: 724px) 100vw, 724px\" /></figure>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/calonocne-czuwanie-ogien-dwoch-serc/",
+      "attachments": []
+    },
+    {
+      "id": 19317,
+      "title": "28.08.2026r. Nabożeństwo ku czci św. Ojca Charbela",
+      "date": "2026-08-24",
+      "author": "Piotr",
+      "slug": "28-08-2026r-nabozenstwo-ku-czci-sw-ojca-charbela",
+      "featuredImage": "assets/news/05/IMG-20260823-WA0000.jpg",
+      "excerpt": "",
+      "contentHtml": "\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"725\" height=\"1024\" src=\"assets/news/05/IMG-20260823-WA0000-725x1024.jpg\" alt=\"\" class=\"wp-image-19318\" srcset=\"assets/news/05/IMG-20260823-WA0000.jpg 1055w\" sizes=\"auto, (max-width: 725px) 100vw, 725px\" /></figure>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/28-08-2026r-nabozenstwo-ku-czci-sw-ojca-charbela/",
+      "attachments": []
+    },
+    {
+      "id": 19299,
+      "title": "20 niedziela zwykła – „Wiara niewiasty kananejskiej”",
+      "date": "2026-08-15",
+      "author": "Piotr",
+      "slug": "20-niedziela-zwykla-wiara-niewiasty-kananejskiej",
+      "featuredImage": "assets/news/06/20-Niedz.-A9.jpg",
+      "excerpt": "Mt 15, 21-28 Jezus podążył w okolice Tyru i Sydonu. A oto kobieta kananejska, wyszedłszy z tamtych stron, wołała: «Ulituj się nade mną, Panie, Synu Dawida! Moja córka jest ciężko nękana przez złego ducha». Lecz On nie odezwał się do niej ani słowem. Na to podeszli Jego uczniowie i prosili Go: «Odpraw ją, bo krzyczy…",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">Mt 15, 21-28</p>\n\n\n\n<p class=\"wp-block-paragraph\"><strong>Jezus podążył w okolice Tyru i Sydonu. A oto kobieta kananejska, wyszedłszy z tamtych stron, wołała: «Ulituj się nade mną, Panie, Synu Dawida! Moja córka jest ciężko nękana przez złego ducha». Lecz On nie odezwał się do niej ani słowem. Na to podeszli Jego uczniowie i prosili Go: «Odpraw ją, bo krzyczy za nami».Lecz On odpowiedział: «Jestem posłany tylko do owiec, które poginęły z domu Izraela». A ona przyszła, padła Mu do nóg i prosiła: «Panie, dopomóż mi». On jednak odparł: «Niedobrze jest zabierać chleb dzieciom, a rzucać szczeniętom». A ona odrzekła: «Tak, Panie, lecz i szczenięta jedzą okruchy, które spadają ze stołu ich panów». Wtedy Jezus jej odpowiedział: «O niewiasto, wielka jest twoja wiara; niech ci się stanie, jak pragniesz!» Od tej chwili jej córka była zdrowa.</strong></p>\n\n\n\n<p class=\"wp-block-paragraph\">Spotkanie to jest jednym z najbardziej zaskakujących w Ewangelii. Jezus milczy, a nawet zdaje się odrzucać prośbę kobiety, a ona zamiast się obrazić &#8211; z pokorą, ale i wielką odwagą, nalega. to jej wytrwałość &#8222;rozsadza&#8221; granice. Jezus pokazuje uczniom, że wiara może przyjść z najbardziej nieoczekiwanej strony. Kananejka uczy, że prawdziwa wiara nie zatrzymuje się na pierwszym milczeniu Boga, nie zraża się trudnością, ale szuka dalej spotka serce, które odpowiada.</p>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/20-niedziela-zwykla-wiara-niewiasty-kananejskiej/",
+      "attachments": []
+    },
+    {
+      "id": 19279,
+      "title": "19 niedziela zwykła – „Jezus chodzi po jeziorze”",
+      "date": "2026-08-08",
+      "author": "Piotr",
+      "slug": "19-niedziela-zwykla-jezus-chodzi-po-jeziorze-2",
+      "featuredImage": "assets/news/07/19-Niedz.-A5.jpg",
+      "excerpt": "Mt 14, 22-33 Gdy tłum został nasycony, zaraz Jezus przynaglił uczniów, żeby wsiedli do łodzi i wyprzedzili Go na drugi brzeg, zanim odprawi tłumy. Gdy to uczynił, wyszedł sam jeden na górę, aby się modlić. Wieczór zapadł, a On sam tam przebywał. Łódź zaś była już o wiele stadiów oddalona od brzegu, miotana falami, bo…",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">Mt 14, 22-33</p>\n\n\n\n<p class=\"wp-block-paragraph\">Gdy tłum został nasycony, zaraz Jezus przynaglił uczniów, żeby wsiedli do łodzi i wyprzedzili Go na drugi brzeg, zanim odprawi tłumy. Gdy to uczynił, wyszedł sam jeden na górę, aby się modlić. Wieczór zapadł, a On sam tam przebywał.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Łódź zaś była już o wiele stadiów oddalona od brzegu, miotana falami, bo wiatr był przeciwny. Lecz o czwartej straży nocnej przyszedł do nich, krocząc po jeziorze.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Uczniowie, zobaczywszy Go kroczącego po jeziorze, zlękli się, myśląc, że to zjawa, i ze strachu krzyknęli. Jezus zaraz przemówił do nich: «Odwagi! To Ja jestem, nie bójcie się!»</p>\n\n\n\n<p class=\"wp-block-paragraph\">Na to odezwał się Piotr: «Panie, jeśli to Ty jesteś, każ mi przyjść do siebie po wodzie!» A On rzekł: «Przyjdź!» Piotr wyszedł z łodzi i krocząc po wodzie, podszedł do Jezusa. Lecz na widok silnego wiatru uląkł się i gdy zaczął tonąć, krzyknął: «Panie, ratuj mnie!»</p>\n\n\n\n<p class=\"wp-block-paragraph\">Jezus natychmiast wyciągnął rękę i chwycił go, mówiąc: «Czemu zwątpiłeś, człowiecze małej wiary?»</p>\n\n\n\n<p class=\"wp-block-paragraph\">Gdy wsiedli do łodzi, wiatr się uciszył. Ci zaś, którzy byli w łodzi, upadli przed Nim, mówiąc: «Prawdziwie jesteś Synem Bożym».</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/19-niedziela-zwykla-jezus-chodzi-po-jeziorze-2/",
+      "attachments": []
+    },
+    {
+      "id": 19264,
+      "title": "18 niedziela zwykła – „Cudowne rozmnożenie chleba”",
+      "date": "2026-08-01",
+      "author": "Piotr",
+      "slug": "18-niedziela-zwykla-cudowne-rozmnozenie-chleba",
+      "featuredImage": "assets/news/08/18-Niedz.-A5.jpg",
+      "excerpt": "Mt 14, 13-21 „Gdy Jezus usłyszał o śmierci Jana Chrzciciela, oddalił się stamtąd łodzią na pustkowie, osobno. Lecz tłumy zwiedziały się o tym i z miast poszły za Nim pieszo. Gdy wysiadł, ujrzał wielki tłum. Zlitował się nad nimi i uzdrowił ich chorych. A gdy nastał wieczór, przystąpili do Niego uczniowie i rzekli: «Miejsce to…",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">Mt 14, 13-21</p>\n\n\n\n<p class=\"wp-block-paragraph\">&#8222;<strong>Gdy Jezus usłyszał o śmierci Jana Chrzciciela, oddalił się stamtąd łodzią na pustkowie, osobno. Lecz tłumy zwiedziały się o tym i z miast poszły za Nim pieszo. Gdy wysiadł, ujrzał wielki tłum. Zlitował się nad nimi i uzdrowił ich chorych. A gdy nastał wieczór, przystąpili do Niego uczniowie i rzekli: «Miejsce to jest pustkowiem i pora już późna. Każ więc rozejść się tłumom: niech idą do wsi i zakupią sobie żywności».Lecz Jezus im odpowiedział: «Nie potrzebują odchodzić; wy dajcie im jeść!» Odpowiedzieli Mu: «Nie mamy tu nic prócz pięciu chlebów i dwóch ryb».<br>On rzekł: «Przynieście Mi je tutaj».  Kazał tłumom usiąść na trawie, następnie wziąwszy pięć chlebów i dwie ryby, spojrzał w niebo, odmówił błogosławieństwo i połamawszy chleby, dał je uczniom, uczniowie zaś tłumom. Jedli wszyscy do syta, a z tego, co pozostało, zebrano dwanaście pełnych koszy ułomków. Tych zaś, którzy jedli, było około pięciu tysięcy mężczyzn, nie licząc kobiet i dzieci.</strong>&#8222;</p>\n\n\n\n<p class=\"wp-block-paragraph\">Bóg troszczy się o człowieka i chce zaradzić każdemu niedostatkowi. Ufający Jezusowi doświadczają nie tylko rozmnożenia chleba, ale także czasu, zapału, radości, a nade wszystko miłości. Otwórzmy nasze serca na Boże Słowo i przyjmijmy Chleb Życia.  </p>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/18-niedziela-zwykla-cudowne-rozmnozenie-chleba/",
+      "attachments": []
+    },
+    {
+      "id": 19239,
+      "title": "17 niedziela zwykła – „Przypowieści o skarbie, o perle i o sieci”",
+      "date": "2026-07-25",
+      "author": "Piotr",
+      "slug": "17-niedziela-zwykla-przypowiesci-o-skarbie-o-perle-i-o-sieci",
+      "featuredImage": "assets/news/09/17-Niedz.-A0.jpg",
+      "excerpt": "Mt 13, 44-52 Jezus opowiedział tłumom taką przypowieść:«Królestwo niebieskie podobne jest do skarbu ukrytego w roli. Znalazł go pewien człowiek i ukrył ponownie. Uradowany poszedł, sprzedał wszystko, co miał, i kupił tę rolę. Dalej, podobne jest królestwo niebieskie do kupca poszukującego pięknych pereł. Gdy znalazł jedną drogocenną perłę, poszedł, sprzedał wszystko, co miał, i kupił…",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">Mt 13, 44-52</p>\n\n\n\n<p class=\"wp-block-paragraph\">Jezus opowiedział tłumom taką przypowieść:<br>«Królestwo niebieskie podobne jest do skarbu ukrytego w roli. Znalazł go pewien człowiek i ukrył ponownie. Uradowany poszedł, sprzedał wszystko, co miał, i kupił tę rolę. Dalej, podobne jest królestwo niebieskie do kupca poszukującego pięknych pereł. Gdy znalazł jedną drogocenną perłę, poszedł, sprzedał wszystko, co miał, i kupił ją».</p>\n\n\n\n<p class=\"wp-block-paragraph\"><em>Koniec krótszej perykopy.</em></p>\n\n\n\n<p class=\"wp-block-paragraph\">«Dalej, podobne jest królestwo niebieskie do sieci, zarzuconej w morze i zagarniającej ryby wszelkiego rodzaju. Gdy się napełniła, wyciągnęli ją na brzeg i usiadłszy, dobre zebrali w naczynia, a złe odrzucili. Tak będzie przy końcu świata: wyjdą aniołowie, wyłączą złych spośród sprawiedliwych i wrzucą ich w piec rozpalony; tam będzie płacz i zgrzytanie zębów. Zrozumieliście to wszystko?» Odpowiedzieli Mu: «Tak».</p>\n\n\n\n<p class=\"wp-block-paragraph\">A On rzekł do nich: «Dlatego każdy uczony w Piśmie, który stał się uczniem królestwa niebieskiego, podobny jest do ojca rodziny, który ze swego skarbca wydobywa rzeczy nowe i stare»</p>\n\n\n\n<p class=\"wp-block-paragraph\">Pierwsze dwie przypowieści wskazują na cenę królestwa niebieskiego. Obaj &#8211; człowiek, który znalazł skarb w roli, oraz kupiec &#8211; płacą za królestwo wszystkim co mają. Ceną za nie jest więc wszystko co posiadamy. </p>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/17-niedziela-zwykla-przypowiesci-o-skarbie-o-perle-i-o-sieci/",
+      "attachments": []
+    },
+    {
+      "id": 19226,
+      "title": "Wspomnienie Liturgiczne św. Charbela – 28.07.2026r.",
+      "date": "2026-07-25",
+      "author": "Piotr",
+      "slug": "wspomnienie-sw-charbela-28-07-2026r",
+      "featuredImage": "assets/news/10/IMG-20260724-WA0003-pop.jpg",
+      "excerpt": "We wtorek 28.07.2026r. we Wspomnienie Liturgiczne zapraszamy na mszę św. o g. 18.00 i nabożeństwo po mszy św. ku czci św. Ojca Charbela.",
+      "contentHtml": "\n<p class=\"wp-block-paragraph\">We wtorek 28.07.2026r. we Wspomnienie Liturgiczne zapraszamy na mszę św. o g. 18.00 i nabożeństwo po mszy św. ku czci św. Ojca Charbela.</p>\n\n\n\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"738\" height=\"929\" src=\"assets/news/10/IMG-20260724-WA0003-pop.jpg\" alt=\"\" class=\"wp-image-19235\" srcset=\"assets/news/10/IMG-20260724-WA0003-pop.jpg 738w, https://www.jadwigakozanow.pl/wp-content/uploads/2026/07/IMG-20260724-WA0003-pop-159x200.jpg 159w, https://www.jadwigakozanow.pl/wp-content/uploads/2026/07/IMG-20260724-WA0003-pop-300x378.jpg 300w\" sizes=\"auto, (max-width: 738px) 100vw, 738px\" /></figure>\n",
+      "sourceUrl": "https://www.jadwigakozanow.pl/wspomnienie-sw-charbela-28-07-2026r/",
+      "attachments": []
+    }
+  ]
+};

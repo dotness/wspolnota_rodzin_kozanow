@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO & Open Graph Meta Tags -->
+  <title>Wspólnota Rodzin | Parafia św. Jadwigi Śląskiej Wrocław-Kozanów</title>
+  <meta name="description" content="Oficjalna strona Wspólnoty Rodzin przy parafii św. Jadwigi Śląskiej we Wrocławiu (Kozanów). Razem w wierze, w miłości, na co dzień ♡ Aktualności, terminy spotkań i dokumenty." />
+  <meta name="theme-color" content="#b85d38" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wspólnota Rodzin | Wrocław-Kozanów" />
+  <meta property="og:description" content="Razem w wierze, w miłości, na co dzień ♡ Poznaj naszą wspólnotę rodzinną i czytaj najnowsze wiadomości parafialne." />
+  <meta property="og:image" content="assets/images/header/wspolnota_rodzin_header.png" />
+  <meta property="og:locale" content="pl_PL" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/images/header/wspolnota_rodzin_header.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=1.2" />
+  <link rel="stylesheet" href="css/components.css?v=1.2" />
+</head>
+<body>
+
+  <!-- Centered Mobile Container (max 600px width matching website_reference) -->
+  <div class="app-container">
+
+    <!-- Minimalist Pre-Header Bar -->
+    <header class="pre-header-bar" role="banner">
+      <div class="pre-header-parish">
+        <span class="pre-header-cross" aria-hidden="true">✝</span>
+        <span>Parafia pw. św. Jadwigi Śląskiej</span>
+      </div>
+      <span class="pre-header-location">Wrocław – Kozanów</span>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- 1. Top Headline Banner Image (headline_reference.png) -->
+      <section class="header-hero-wrapper" aria-label="Wspólnota Rodzin Plakat">
+        <div class="headline-poster-card">
+          <img
+            src="assets/images/header/wspolnota_rodzin_header.png"
+            alt="Wspólnota Rodzin – Razem w wierze, w miłości, na co dzień. Parafia św. Jadwigi Śląskiej Wrocław-Kozanów"
+            class="headline-poster-img"
+          />
+        </div>
+
+        <!-- Next Meeting Highlight Card -->
+        <div class="meeting-highlight-card" id="meeting-card">
+          <!-- Injected dynamically via js/app.js -->
+        </div>
+      </section>
+
+      <!-- 2. Timeline News Feed with Continuous Line ("the tiles lines") -->
+      <section class="timeline-section" aria-label="Aktualności z życia parafii i wspólnoty">
+        <div class="timeline-feed" id="news-timeline" role="region" aria-live="polite">
+          <!-- 10 Tiles rendered dynamically via js/app.js with connecting vertical line & nodes -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 3. Site Footer (Matching website_reference) -->
+    <footer class="site-footer" role="contentinfo">
+      <!-- Social Media Buttons -->
+      <div class="footer-social-row" aria-label="Media społecznościowe parafii">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/jadwigakozanow" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@parafiasw.jadwigislaskiejw4497" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <!-- Website -->
+        <a href="https://www.jadwigakozanow.pl/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Oficjalna strona parafii">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-parish-name">Parafia Rzymskokatolicka pw. św. Jadwigi Śląskiej</div>
+      <p class="footer-address-line">
+        ul. Pilczycka 25, 54-150 Wrocław (Kozanów)<br />
+        Kancelaria parafialna: tel. 71 373 66 18
+      </p>
+
+      <div class="footer-links-row">
+        <a href="https://www.jadwigakozanow.pl/" target="_blank" rel="noopener noreferrer" class="footer-link-item">Strona Parafii</a>
+        <span>&bull;</span>
+        <a href="#meeting-card" class="footer-link-item">Najbliższe spotkanie</a>
+        <span>&bull;</span>
+        <a href="#" class="footer-link-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Na górę ↑</a>
+      </div>
+
+      <p class="footer-disclaimer">
+        Wspólnota Rodzin Kozanów &bull; Bo rodzina to wielki dar ♡ &bull; Wszelkie prawa zastrzeżone.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Accessible Article Modal Reader -->
+  <div id="article-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-top-bar">
+        <button type="button" class="modal-back-btn" id="modal-close-btn" aria-label="Wróć do listy artykułów">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Wróć</span>
+        </button>
+        <button type="button" class="modal-close-icon-btn" aria-label="Zamknij artykuł" onclick="document.getElementById('modal-close-btn').click()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-content-scroll" id="modal-body" tabindex="0">
+        <!-- Injected dynamically via js/app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Scripts (with offline fallback) -->
+  <script src="js/content-data.js?v=1.2"></script>
+  <script src="js/app.js?v=1.2"></script>
+</body>
+</html>

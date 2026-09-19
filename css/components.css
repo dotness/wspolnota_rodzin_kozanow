@@ -1,0 +1,710 @@
+/**
+ * Wspólnota Rodzin Kozanów - Components Stylesheet
+ * Strictly bounded layout, zero horizontal overflow,
+ * and single-image rendering for article modals.
+ */
+
+/* ==========================================================================
+   1. TOP HEADLINE BANNER (headline_reference.png)
+   ========================================================================== */
+.header-hero-wrapper {
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.headline-poster-card {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-dim);
+  box-sizing: border-box;
+}
+
+.headline-poster-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Meeting Highlight Card under Poster */
+.meeting-highlight-card {
+  margin-top: 14px;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf8f4 100%);
+  border: 1px solid #ebd5c8;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.meeting-highlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-tint);
+  border: 1px solid rgba(184, 93, 56, 0.2);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+}
+
+.meeting-date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.meeting-location-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+/* Meeting Image Preview */
+.meeting-image-preview {
+  margin-top: 10px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  background-color: #eee9e2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.meeting-image-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.meeting-poster-thumb {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.meeting-image-preview:hover .meeting-poster-thumb {
+  transform: scale(1.02);
+}
+
+.meeting-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.meeting-overlay-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--color-primary-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   2. CONTINUOUS TIMELINE & NEWS TILES ("THE TILES LINES")
+   ========================================================================== */
+
+/* Main Timeline Feed Container */
+.timeline-feed {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Continuous vertical grey line running down the entire page */
+.timeline-feed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 20px;
+  left: var(--timeline-offset);
+  width: 3px;
+  background-color: var(--color-timeline-line);
+  z-index: 1;
+}
+
+/* Category Headers with Timeline Line Piercing Through */
+.timeline-category {
+  position: relative;
+  z-index: 2;
+  margin: 10px 0 2px 0;
+  padding-left: 58px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-pill {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #111111;
+  background-color: var(--color-surface);
+  padding: 4px 10px 4px 0;
+}
+
+/* News Tile Card */
+.news-tile {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-tile);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.news-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.13);
+}
+
+.tile-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  background-color: #eee9e2;
+  overflow: hidden;
+}
+
+@media (max-width: 420px) {
+  .tile-media-wrap {
+    height: 300px;
+  }
+}
+
+.tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.news-tile:hover .tile-img {
+  transform: scale(1.03);
+}
+
+/* Subtle gradient at the bottom so text badge pops */
+.tile-media-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.48) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Vertical line passing INSIDE the card image */
+.tile-inner-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--timeline-offset);
+  width: 3px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+/* Circular Node Dot on the vertical line */
+.tile-node-dot {
+  position: absolute;
+  top: 56%;
+  left: var(--timeline-offset);
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.news-tile:hover .tile-node-dot {
+  transform: translate(-50%, -50%) scale(1.15);
+  border-color: #ffffff;
+  background-color: var(--color-primary);
+}
+
+/* Floating White Badge Overlay (Signature website_reference element) */
+.tile-badge-box {
+  position: absolute;
+  bottom: 16px;
+  left: 58px;
+  right: 14px;
+  max-width: calc(100% - 72px);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-badge);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  z-index: 4;
+  box-sizing: border-box;
+}
+
+.tile-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tile-date-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tile-pdf-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #1e40af;
+  background-color: #dbeafe;
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+}
+
+.tile-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.32;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tile-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tile-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.tile-action-link svg {
+  transition: transform 0.2s ease;
+}
+
+.news-tile:hover .tile-action-link svg {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   3. ARTICLE MODAL READER
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  overscroll-behavior: contain;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(20, 16, 14, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  touch-action: none;
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 101;
+  width: 100%;
+  max-width: 600px;
+  height: 92vh;
+  background-color: #ffffff;
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-modal);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+}
+
+.modal-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+.modal-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  min-height: 44px;
+  padding: 0 4px;
+}
+
+.modal-back-btn:hover {
+  text-decoration: underline;
+}
+
+.modal-close-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-dim);
+}
+
+.modal-close-icon-btn:hover {
+  background-color: var(--color-primary-tint);
+  color: var(--color-primary-dark);
+}
+
+.modal-content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 18px 40px 18px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  box-sizing: border-box;
+}
+
+.modal-article-header {
+  margin-bottom: 16px;
+}
+
+.modal-article-meta {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.modal-date {
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.modal-article-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.28;
+}
+
+.modal-featured-figure {
+  margin: 16px 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  max-width: 100%;
+}
+
+.modal-featured-img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-article-prose {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: #2b2521;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.modal-article-prose p {
+  margin-bottom: 14px;
+}
+
+.modal-article-prose img,
+.modal-article-prose figure,
+.modal-article-prose object,
+.modal-article-prose iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  border-radius: var(--radius-sm);
+  margin: 14px 0;
+}
+
+.modal-article-prose .wp-block-image {
+  margin: 14px 0;
+  max-width: 100%;
+}
+
+/* Attachments Download Callout Box */
+.modal-attachments-box {
+  margin-top: 24px;
+  background-color: var(--color-primary-tint);
+  border: 1px solid rgba(184, 93, 56, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.attachments-heading {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.attachments-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attachment-download-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-main);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.attachment-download-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.att-icon {
+  background-color: #dc2626;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.att-name {
+  flex: 1;
+  word-break: break-word;
+}
+
+.att-size {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.modal-source-footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
+/* ==========================================================================
+   4. FOOTER (Matching website_reference)
+   ========================================================================== */
+.site-footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-subtle);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.social-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #f3efe9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a433e;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-icon-btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.footer-parish-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.footer-address-line {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.footer-links-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-link-item {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link-item:hover {
+  text-decoration: underline;
+}
+
+.footer-disclaimer {
+  font-size: 0.72rem;
+  color: var(--color-text-subtle);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

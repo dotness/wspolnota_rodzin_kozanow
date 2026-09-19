@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WspolnotaRodzinContentSchema",
+  "description": "Schema for data/content.json used by the Wspólnota Rodzin website and AI agents.",
+  "type": "object",
+  "required": ["siteConfig", "pillars", "news"],
+  "properties": {
+    "siteConfig": {
+      "type": "object",
+      "required": ["siteTitle", "parishName", "location", "slogan", "motto"],
+      "properties": {
+        "siteTitle": { "type": "string" },
+        "parishName": { "type": "string" },
+        "location": { "type": "string" },
+        "slogan": { "type": "string" },
+        "motto": { "type": "string" },
+        "headerImage": { "type": "string" },
+        "nextMeeting": {
+          "type": "object",
+          "required": ["title", "dateText", "locationText"],
+          "properties": {
+            "title": { "type": "string" },
+            "dateText": { "type": "string" },
+            "locationText": { "type": "string" },
+            "description": { "type": "string" },
+            "image": { "type": "string" },
+            "contentHtml": { "type": "string" }
+          }
+        }
+      }
+    },
+    "pillars": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "subtitle", "description", "icon"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "description": { "type": "string" },
+          "icon": { "type": "string" }
+        }
+      }
+    },
+    "news": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "date", "slug", "excerpt", "contentHtml"],
+        "properties": {
+          "id": { "type": ["number", "string"] },
+          "title": { "type": "string" },
+          "date": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "author": { "type": "string" },
+          "slug": { "type": "string" },
+          "featuredImage": { "type": "string" },
+          "excerpt": { "type": "string" },
+          "contentHtml": { "type": "string" },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "path", "type"],
+              "properties": {
+                "name": { "type": "string" },
+                "path": { "type": "string" },
+                "type": { "type": "string" },
+                "sizeText": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
