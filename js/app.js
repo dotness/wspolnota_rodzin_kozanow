@@ -219,13 +219,7 @@
             <span class="category-pill">Najnowsze Wydarzenia</span>
           </div>
         `;
-      } else if (item.id === 19347 || item.slug === 'oswiadczenie-kep-i-apel-rady-biskupow') {
-        html += `
-          <div class="timeline-category" aria-hidden="true">
-            <span class="category-pill">Komunikaty i Dokumenty</span>
-          </div>
-        `;
-      } else if (item.id === 19334 || item.slug === 'calonocne-czuwanie-ogien-dwoch-serc') {
+      } else if (item.id === 19366 || item.slug === 'adoracja-najswietszego-sakramentu-w-iii-piatek-18-wrzesnia-2026r') {
         html += `
           <div class="timeline-category" aria-hidden="true">
             <span class="category-pill">Z Życia Parafii Kozanów</span>
