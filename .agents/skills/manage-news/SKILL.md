@@ -56,18 +56,77 @@ python3 scripts/manage_news.py add \
 - `--excerpt` (Optional): Short 1-2 sentence preview. If omitted, it is automatically derived from the content.
 - `--image` (Optional): Path to an image file. The script will automatically copy it into `assets/news/<new_id>/` and link it as `featuredImage`.
 - `--attachment` (Optional, repeatable): Path to a PDF document. The script will copy it to `assets/docs/` and register it in `attachments`.
+- `--youtube-url` (Optional): Full URL to a YouTube Short or video (e.g. `https://www.youtube.com/shorts/<id>` or `https://www.youtube.com/watch?v=<id>`).
+- `--is-video` (Optional): Explicitly flag as video event (sets `isVideo: true`).
 - `--slug` (Optional): URL-safe slug. If omitted, it is automatically transliterated from the title.
 - `--author` (Optional): Defaults to `"Wspólnota Rodzin"`.
 
 The script automatically:
 1. Generates a unique numeric ID.
-2. Formats and inserts the article at the top of `data/content.json`.
-3. Runs `scripts/export_js_data.py` to keep `js/content-data.js` in sync.
-4. Runs `scripts/validate_content.py` to guarantee schema correctness.
+2. If `--youtube-url` is passed:
+   - Sets `isVideo: true`.
+   - Downloads the high-resolution YouTube cover thumbnail to `assets/news/<id>/cover.jpg` if `--image` is omitted.
+   - Generates the responsive embed HTML (vertical 9:16 for Shorts, horizontal 16:9 for standard videos).
+   - Generates the direct YouTube CTA link button.
+3. Formats and inserts the article at the top of `data/content.json`.
+4. Runs `scripts/export_js_data.py` to keep `js/content-data.js` in sync.
+5. Runs `scripts/validate_content.py` to guarantee schema correctness.
 
 ---
 
-### 3. Update an Existing News Article
+### 3. Adding a YouTube Short or Video Event
+
+#### A. Automated Way (Recommended CLI):
+For a YouTube Short:
+```bash
+python3 scripts/manage_news.py add \
+  --title "Jak misjonarze cyfrowi budują realną wspólnotę w sieci" \
+  --youtube-url "https://www.youtube.com/shorts/_xPMmn8meFM" \
+  --content "Zapraszamy do obejrzenia krótkiego materiału wideo Wspólnoty Rodzin..."
+```
+
+For a standard horizontal video:
+```bash
+python3 scripts/manage_news.py add \
+  --title "Relacja ze spotkania Wspólnoty" \
+  --youtube-url "https://www.youtube.com/watch?v=ABC123XYZ" \
+  --content "Obejrzyj pełne nagranie z naszej konferencji..."
+```
+
+#### B. Manual JSON Schema in `data/content.json`:
+```json
+{
+  "id": 19374,
+  "title": "Tytuł materiału wideo",
+  "date": "2026-09-21",
+  "author": "Wspólnota Rodzin",
+  "slug": "tytul-materialu-wideo",
+  "featuredImage": "assets/news/19374/cover.jpg",
+  "isVideo": true,
+  "excerpt": "Krótki opis wideo...",
+  "contentHtml": "<p class=\"article-lead\">\n  Drodzy Przyjaciele...\n</p>\n\n<div class=\"video-embed-wrapper\">\n  <div class=\"video-embed-container\">\n    <iframe src=\"https://www.youtube.com/embed/_xPMmn8meFM?rel=0\" title=\"Tytuł\" loading=\"lazy\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n  </div>\n</div>\n\n<p style=\"text-align: center; margin: 16px 0;\">\n  <a href=\"https://www.youtube.com/shorts/_xPMmn8meFM\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #c75d2c; text-decoration: none; font-size: 0.95rem;\">\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\"/></svg>\n    Otwórz w aplikacji YouTube\n  </a>\n</p>",
+  "sourceUrl": "https://www.youtube.com/shorts/_xPMmn8meFM",
+  "attachments": []
+}
+```
+
+#### C. Video Embedding & Styling Architecture Rules:
+1. **Shorts (Pionowe wideo 9:16)**:
+   - Wrapper: `.video-embed-wrapper` (`display: flex; justify-content: center;`).
+   - Container: `.video-embed-container` with `aspect-ratio: 9 / 16` and `max-width: 325px`.
+   - The iframe inside has `position: absolute; width: 100% !important; height: 100% !important; border: 0;`.
+2. **Standard Video (Poziome wideo 16:9)**:
+   - Add `.is-horizontal` class: `<div class="video-embed-container is-horizontal">` (`aspect-ratio: 16 / 9; max-width: 640px`).
+3. **CRITICAL CSS CAVEAT**:
+   - Never apply `height: auto !important` to `iframe` elements in generic prose rules. HTML iframes do not have intrinsic aspect ratio, so `height: auto` causes browsers to collapse them to the default 150px height, creating massive black voids.
+4. **Timeline UI & Player Features (`js/app.js`)**:
+   - Setting `"isVideo": true` (or having an `<iframe>` in `contentHtml`) renders the `▶ Wideo` pill and Play button overlay on the card tile, and sets the CTA link to "Obejrzyj nagranie".
+   - In the modal reader: duplicate `featuredImage` header is automatically suppressed if an `<iframe>` is present.
+   - When closing the modal, all `iframe.src` properties are reset so video/audio playback terminates immediately.
+
+---
+
+### 4. Update an Existing News Article
 
 To modify any fields of an existing article by ID or slug:
 
@@ -88,10 +147,12 @@ python3 scripts/manage_news.py update \
 - `--image`: Path to new featured image (will be copied into the article's asset folder).
 - `--clear-image`: Clears the featured image.
 - `--attachment`: Adds attachment file to `assets/docs/`.
+- `--youtube-url`: YouTube video or Shorts URL to embed.
+- `--is-video`: Mark or unmark as video (`true`/`false`).
 
 ---
 
-### 4. Remove a News Article
+### 5. Remove a News Article
 
 To delete an article:
 
