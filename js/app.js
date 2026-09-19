@@ -91,8 +91,15 @@
    */
   function renderMeeting(config) {
     const meetingCard = document.getElementById('meeting-card');
-    if (!meetingCard || !config.nextMeeting) return;
+    if (!meetingCard) return;
 
+    if (!config || !config.nextMeeting) {
+      meetingCard.style.display = 'none';
+      meetingCard.innerHTML = '';
+      return;
+    }
+
+    meetingCard.style.display = '';
     const nm = config.nextMeeting;
     const hasImage = Boolean(nm.image);
 
@@ -233,7 +240,7 @@
             <div class="tile-badge-box">
               <div class="tile-meta-row">
                 <span class="tile-date-pill">${formattedDate}</span>
-                ${hasAttachments ? '<span class="tile-pdf-pill">📄 2 dokumenty PDF</span>' : ''}
+                ${hasAttachments ? `<span class="tile-pdf-pill">📄 ${item.attachments.length} ${item.attachments.length === 1 ? 'dokument' : (item.attachments.length < 5 ? 'dokumenty' : 'dokumentów')}</span>` : ''}
               </div>
               <h3 class="tile-title">${item.title}</h3>
               <div class="tile-action-row">

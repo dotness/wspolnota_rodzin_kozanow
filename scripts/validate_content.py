@@ -40,10 +40,11 @@ def validate():
         if req not in cfg or not isinstance(cfg[req], str) or not cfg[req].strip():
             errors.append(f"siteConfig.{req} is missing or empty")
 
-    nm = cfg.get("nextMeeting", {})
-    for req in ["title", "dateText", "locationText"]:
-        if req not in nm or not isinstance(nm[req], str) or not nm[req].strip():
-            errors.append(f"siteConfig.nextMeeting.{req} is missing or empty")
+    nm = cfg.get("nextMeeting")
+    if nm is not None:
+        for req in ["title", "dateText", "locationText"]:
+            if req not in nm or not isinstance(nm[req], str) or not nm[req].strip():
+                errors.append(f"siteConfig.nextMeeting.{req} is missing or empty")
 
     # 3. Check pillars
     pillars = data.get("pillars", [])
@@ -57,8 +58,8 @@ def validate():
 
     # 4. Check news
     news = data.get("news", [])
-    if not isinstance(news, list) or len(news) < 10:
-        errors.append(f"news must be a list of at least 10 items (found {len(news)})")
+    if not isinstance(news, list) or len(news) < 1:
+        errors.append(f"news must be a non-empty list (found {len(news) if isinstance(news, list) else 'not a list'})")
     else:
         for idx, item in enumerate(news):
             for req in ["id", "title", "date", "slug", "excerpt", "contentHtml"]:

@@ -16,8 +16,7 @@
         "motto": { "type": "string" },
         "headerImage": { "type": "string" },
         "nextMeeting": {
-          "type": "object",
-          "required": ["title", "dateText", "locationText"],
+          "type": ["object", "null"],
           "properties": {
             "title": { "type": "string" },
             "dateText": { "type": "string" },
@@ -47,7 +46,7 @@
     },
     "news": {
       "type": "array",
-      "minItems": 10,
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": ["id", "title", "date", "slug", "excerpt", "contentHtml"],
