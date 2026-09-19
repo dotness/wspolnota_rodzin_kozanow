@@ -11,7 +11,12 @@
   const state = {
     data: null,
     activeArticleId: null,
+    renderedNewsCount: 0,
+    feedObserver: null,
   };
+
+  const INITIAL_NEWS_COUNT = 8;
+  const NEWS_BATCH_SIZE = 4;
 
   let savedScrollY = 0;
 
@@ -91,17 +96,26 @@
    */
   function renderMeeting(config) {
     const meetingCard = document.getElementById('meeting-card');
+    const headlineDateBadge = document.getElementById('headline-meeting-date');
     if (!meetingCard) return;
 
     if (!config || !config.nextMeeting) {
       meetingCard.style.display = 'none';
       meetingCard.innerHTML = '';
+      if (headlineDateBadge) headlineDateBadge.style.display = 'none';
       return;
     }
 
     meetingCard.style.display = '';
     const nm = config.nextMeeting;
     const hasImage = Boolean(nm.image);
+
+    if (headlineDateBadge) {
+      const badgeText = nm.badgeText || (nm.dateText ? (nm.dateText.match(/(\d{1,2}\.\d{2})/) ? nm.dateText.match(/(\d{1,2}\.\d{2})/)[1] : '') : '') || '09.10';
+      headlineDateBadge.textContent = badgeText;
+      headlineDateBadge.style.display = '';
+      headlineDateBadge.setAttribute('aria-label', `Data następnego spotkania: ${badgeText}`);
+    }
 
     meetingCard.innerHTML = `
       <div class="meeting-highlight-badge">Najbliższe Spotkanie Wspólnoty</div>
@@ -189,78 +203,51 @@
   }
 
   /**
-   * Renders the Timeline News Feed (Matching website_reference tile lines)
+   * Generates single article tile HTML
    */
-  function renderNewsFeed(newsList) {
-    const container = document.getElementById('news-timeline');
-    if (!container) return;
+  function buildTileHtml(item, isIncremental = false) {
+    const formattedDate = formatDatePl(item.date);
+    const hasAttachments = item.attachments && item.attachments.length > 0;
+    const mediaSrc = item.featuredImage || 'assets/images/header/wspolnota_rodzin_header.png';
+    const animClass = isIncremental ? ' fade-in' : '';
 
-    if (!newsList || newsList.length === 0) {
-      container.innerHTML = '<p class="empty-feed">Brak aktualności do wyświetlenia.</p>';
-      return;
-    }
-
-    let html = '';
-
-    newsList.forEach((item, index) => {
-      // Category divider tags along the timeline line (like in website_reference)
-      if (index === 0) {
-        html += `
-          <div class="timeline-category" aria-hidden="true">
-            <span class="category-pill">Najnowsze Wydarzenia</span>
-          </div>
-        `;
-      } else if (index === 2) {
-        html += `
-          <div class="timeline-category" aria-hidden="true">
-            <span class="category-pill">Komunikaty i Dokumenty</span>
-          </div>
-        `;
-      } else if (index === 5) {
-        html += `
-          <div class="timeline-category" aria-hidden="true">
-            <span class="category-pill">Z Życia Parafii Kozanów</span>
-          </div>
-        `;
-      }
-
-      const formattedDate = formatDatePl(item.date);
-      const hasAttachments = item.attachments && item.attachments.length > 0;
-      const mediaSrc = item.featuredImage || 'assets/images/header/wspolnota_rodzin_header.png';
-
-      html += `
-        <article class="news-tile" data-article-id="${item.id}" tabindex="0" role="button" aria-label="Czytaj artykuł: ${item.title}">
-          <div class="tile-media-wrap">
-            <img src="${mediaSrc}" alt="${item.title}" loading="lazy" class="tile-img" />
-            <!-- The vertical line continuing inside the tile -->
-            <div class="tile-inner-line" aria-hidden="true"></div>
-            <!-- The circular node on the vertical line -->
-            <div class="tile-node-dot" aria-hidden="true"></div>
-            <!-- Floating white badge cutout overlay -->
-            <div class="tile-badge-box">
-              <div class="tile-meta-row">
-                <span class="tile-date-pill">${formattedDate}</span>
-                ${hasAttachments ? `<span class="tile-pdf-pill">📄 ${item.attachments.length} ${item.attachments.length === 1 ? 'dokument' : (item.attachments.length < 5 ? 'dokumenty' : 'dokumentów')}</span>` : ''}
-              </div>
-              <h3 class="tile-title">${item.title}</h3>
-              <div class="tile-action-row">
-                <span class="tile-action-link">
-                  Czytaj całość
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </span>
-              </div>
+    return `
+      <article class="news-tile${animClass}" data-article-id="${item.id}" tabindex="0" role="button" aria-label="Czytaj artykuł: ${item.title}">
+        <div class="tile-media-wrap">
+          <img src="${mediaSrc}" alt="${item.title}" loading="lazy" class="tile-img" />
+          <!-- The vertical line continuing inside the tile -->
+          <div class="tile-inner-line" aria-hidden="true"></div>
+          <!-- The circular node on the vertical line -->
+          <div class="tile-node-dot" aria-hidden="true"></div>
+          <!-- Floating white badge cutout overlay -->
+          <div class="tile-badge-box">
+            <div class="tile-meta-row">
+              <span class="tile-date-pill">${formattedDate}</span>
+              ${hasAttachments ? `<span class="tile-pdf-pill">📄 ${item.attachments.length} ${item.attachments.length === 1 ? 'dokument' : (item.attachments.length < 5 ? 'dokumenty' : 'dokumentów')}</span>` : ''}
+            </div>
+            <h3 class="tile-title">${item.title}</h3>
+            <div class="tile-action-row">
+              <span class="tile-action-link">
+                Czytaj całość
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
             </div>
           </div>
-        </article>
-      `;
-    });
+        </div>
+      </article>
+    `;
+  }
 
-    container.innerHTML = html;
+  /**
+   * Binds click and keyboard listeners to newly rendered tiles
+   */
+  function bindTileEvents(scopeElement) {
+    scopeElement.querySelectorAll('.news-tile').forEach(tile => {
+      if (tile.dataset.eventsBound) return;
+      tile.dataset.eventsBound = 'true';
 
-    // Attach click and keyboard listeners to tiles
-    container.querySelectorAll('.news-tile').forEach(tile => {
       const open = () => {
         const id = tile.getAttribute('data-article-id');
         openArticleModal(id);
@@ -274,6 +261,138 @@
         }
       });
     });
+  }
+
+  /**
+   * Appends the next batch of news articles to the timeline feed
+   */
+  function loadMoreNews(count, isIncremental = false) {
+    const container = document.getElementById('news-timeline');
+    const sentinel = document.getElementById('timeline-sentinel');
+    if (!container || !state.data || !state.data.news) return;
+
+    const allNews = state.data.news;
+    if (state.renderedNewsCount >= allNews.length) {
+      if (sentinel) sentinel.remove();
+      if (state.feedObserver) {
+        state.feedObserver.disconnect();
+        state.feedObserver = null;
+      }
+      return;
+    }
+
+    const nextBatch = allNews.slice(state.renderedNewsCount, state.renderedNewsCount + count);
+    if (nextBatch.length === 0) return;
+
+    const tempWrapper = document.createElement('div');
+    let batchHtml = '';
+
+    nextBatch.forEach((item, batchIdx) => {
+      const globalIndex = state.renderedNewsCount + batchIdx;
+
+      // Category divider tags along the timeline line (like in website_reference)
+      if (globalIndex === 0) {
+        batchHtml += `
+          <div class="timeline-category" aria-hidden="true">
+            <span class="category-pill">Najnowsze Wydarzenia</span>
+          </div>
+        `;
+      } else if (item.id === 19366 || item.slug === 'adoracja-najswietszego-sakramentu-w-iii-piatek-18-wrzesnia-2026r') {
+        batchHtml += `
+          <div class="timeline-category" aria-hidden="true">
+            <span class="category-pill">Z Życia Parafii Kozanów</span>
+          </div>
+        `;
+      }
+
+      batchHtml += buildTileHtml(item, isIncremental);
+    });
+
+    tempWrapper.innerHTML = batchHtml;
+
+    const fragment = document.createDocumentFragment();
+    while (tempWrapper.firstChild) {
+      fragment.appendChild(tempWrapper.firstChild);
+    }
+
+    bindTileEvents(fragment);
+
+    if (sentinel && sentinel.parentNode === container) {
+      container.insertBefore(fragment, sentinel);
+    } else {
+      container.appendChild(fragment);
+    }
+
+    state.renderedNewsCount += nextBatch.length;
+
+    // Remove sentinel & disconnect observer once all items are rendered
+    if (state.renderedNewsCount >= allNews.length) {
+      if (sentinel) sentinel.remove();
+      if (state.feedObserver) {
+        state.feedObserver.disconnect();
+        state.feedObserver = null;
+      }
+    }
+  }
+
+  /**
+   * Initializes the Timeline News Feed with progressive loading (Infinite Scroll)
+   */
+  function renderNewsFeed(newsList) {
+    const container = document.getElementById('news-timeline');
+    if (!container) return;
+
+    if (!newsList || newsList.length === 0) {
+      container.innerHTML = '<p class="empty-feed">Brak aktualności do wyświetlenia.</p>';
+      return;
+    }
+
+    // Reset container and counters
+    container.innerHTML = '';
+    state.renderedNewsCount = 0;
+
+    // Create bottom sentinel with subtle loader
+    const sentinel = document.createElement('div');
+    sentinel.id = 'timeline-sentinel';
+    sentinel.className = 'timeline-sentinel';
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.innerHTML = `
+      <div class="timeline-loader" aria-label="Wczytywanie kolejnych wpisów">
+        <span>Wczytywanie</span>
+        <span class="timeline-loader-dots">
+          <span class="timeline-loader-dot"></span>
+          <span class="timeline-loader-dot"></span>
+          <span class="timeline-loader-dot"></span>
+        </span>
+      </div>
+    `;
+    container.appendChild(sentinel);
+
+    // Initial batch of 8 articles
+    loadMoreNews(INITIAL_NEWS_COUNT, false);
+
+    // Setup progressive infinite scroll if more articles remain
+    if (state.renderedNewsCount < newsList.length) {
+      if ('IntersectionObserver' in window) {
+        if (state.feedObserver) state.feedObserver.disconnect();
+        state.feedObserver = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          if (entry && entry.isIntersecting) {
+            loadMoreNews(NEWS_BATCH_SIZE, true);
+          }
+        }, {
+          root: null,
+          rootMargin: '300px 0px',
+          threshold: 0.01
+        });
+        state.feedObserver.observe(sentinel);
+      } else {
+        // Fallback for older environments without IntersectionObserver
+        loadMoreNews(newsList.length, false);
+      }
+    } else {
+      sentinel.remove();
+    }
   }
 
   /**
@@ -384,6 +503,12 @@
       openMeetingModal();
     } else if (hash && hash.startsWith('#artykul-')) {
       const articleId = hash.replace('#artykul-', '');
+      if (state.data && state.data.news) {
+        const targetIdx = state.data.news.findIndex(n => String(n.id) === String(articleId));
+        if (targetIdx !== -1 && targetIdx >= state.renderedNewsCount) {
+          loadMoreNews((targetIdx - state.renderedNewsCount) + 1, false);
+        }
+      }
       openArticleModal(articleId);
     } else if (state.activeArticleId) {
       closeArticleModal();

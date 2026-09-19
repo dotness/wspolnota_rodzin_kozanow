@@ -23,6 +23,7 @@
             "locationText": { "type": "string" },
             "description": { "type": "string" },
             "image": { "type": "string" },
+            "badgeText": { "type": "string" },
             "contentHtml": { "type": "string" }
           }
         }
