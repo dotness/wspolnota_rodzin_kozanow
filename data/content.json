@@ -7,13 +7,13 @@
     "motto": "Bo rodzina to wielki dar",
     "headerImage": "assets/images/header/wspolnota_rodzin_header.png",
     "nextMeeting": {
-      "title": "Spotkanie Wspólnoty Rodzin – 9 października 2026 r.",
-      "dateText": "Piątek, 9 października 2026 r., po Mszy św. o godz. 18:00",
-      "locationText": "Salka parafialna pod kościołem św. Jadwigi",
-      "image": "assets/images/meeting/spotkanie-wspolnoty-banner.jpg",
-      "badgeText": "09.10",
-      "description": "Serdecznie zapraszamy wszystkie rodziny, małżeństwa, dzieci i młodzież na pierwsze jesienne spotkanie Wspólnoty Rodzin. W programie modlitwa, rozmowa, katecheza oraz poczęstunek.",
-      "contentHtml": "<p>Drogie Rodziny! Serdecznie zapraszamy na spotkanie Wspólnoty Rodzin w piątek 9 października 2026 r. Rozpoczynamy Mszą Świętą o godz. 18:00 w kościele św. Jadwigi Śląskiej na Kozanowie, a następnie przechodzimy do salki parafialnej.</p><h4>W programie:</h4><ul><li>Wspólna modlitwa i chwila wyciszenia</li><li>Konferencja i wartościowe rozmowy dla małżonków</li><li>Zabawy dla dzieci</li><li>Ciepła herbata, kawa i poczęstunek</li></ul><p>Kolejne spotkanie zaplanowane jest na piątek, 23 października 2026 r. Serdecznie zapraszamy!</p>"
+      "title": "Konferencja z cyklu Radość Życia – Jak zbudować i utrzymać dobre relacje w rodzinie?",
+      "dateText": "Piątek, 30 października 2026 r., po Mszy św. o godz. 18:30",
+      "locationText": "Parafia pw. św. Jadwigi Śląskiej, Wrocław Kozanów (ul. Pilczycka 25)",
+      "image": "assets/images/meeting/1792613184290.jpg",
+      "badgeText": "30.10",
+      "description": "Serdecznie zapraszamy na konferencję z cyklu Radość Życia: „Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”. Prowadzi dr Iwona Niedbalska.",
+      "contentHtml": "<p>Serdecznie zapraszamy na wartościową konferencję z cyklu <strong>Radość Życia</strong>!</p><h4>TEMAT:</h4><p>„Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”</p><h4>Szczegóły spotkania:</h4><ul><li><strong>Kiedy:</strong> Piątek, 30 października 2026 r., po Mszy św. o godz. 18:30</li><li><strong>Gdzie:</strong> Parafia pw. św. Jadwigi Śląskiej, Wrocław Kozanów (ul. Pilczycka 25)</li><li><strong>Prelegent:</strong> dr Iwona Niedbalska – lekarz pediatra, doradca życia rodzinnego</li></ul>"
     }
   },
   "pillars": [
@@ -41,12 +41,25 @@
     {
       "id": "termin",
       "title": "NASTĘPNE SPOTKANIE",
-      "subtitle": "Piątek, 9 października, 18:00",
+      "subtitle": "Piątek, 30 października, 18:30",
       "description": "Nasze spotkania są otwarte dla każdego. Przyjdź i zobacz – czekamy na Ciebie i Twoją rodzinę w salce parafialnej!",
       "icon": "calendar"
     }
   ],
   "news": [
+    {
+      "id": 19375,
+      "title": "Konferencja z cyklu Radość Życia: Jak zbudować i utrzymać dobre relacje w rodzinie?",
+      "date": "2026-10-25",
+      "author": "Wspólnota Rodzin",
+      "slug": "konferencja-z-cyklu-radosc-zycia-jak-zbudowac-i-utrzymac-dobre-relacje-w-rodzinie",
+      "featuredImage": "assets/news/19375/1792613184290.jpg",
+      "isVideo": false,
+      "excerpt": "Serdecznie zapraszamy na konferencję z cyklu Radość Życia pt. „Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”. Prowadzi dr Iwona Niedbalska.",
+      "contentHtml": "<p class=\"article-lead\">Serdecznie zapraszamy na wartościową konferencję z cyklu <strong>Radość Życia</strong>!</p><p><strong>TEMAT:</strong> „Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”</p><p><strong>Kiedy?</strong> 30 października, godz. 18:30 po Mszy Świętej.</p><p><strong>Gdzie?</strong> Parafia p.w. Św. Jadwigi, Wrocław Kozanów, ul. Pilczycka 25.</p><p><strong>Prowadzi:</strong> dr Iwona Niedbalska – lekarz pediatra, doradca życia rodzinnego.</p>",
+      "sourceUrl": "",
+      "attachments": []
+    },
     {
       "id": 19374,
       "title": "Jak misjonarze cyfrowi budują realną wspólnotę w sieci",
