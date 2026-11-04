@@ -8,13 +8,13 @@ window.COMMUNITY_DATA = {
     "motto": "Bo rodzina to wielki dar",
     "headerImage": "assets/images/header/wspolnota_rodzin_header.png",
     "nextMeeting": {
-      "title": "Konferencja z cyklu Radość Życia – Jak zbudować i utrzymać dobre relacje w rodzinie?",
-      "dateText": "Piątek, 30 października 2026 r., po Mszy św. o godz. 18:30",
-      "locationText": "Parafia pw. św. Jadwigi Śląskiej, Wrocław Kozanów (ul. Pilczycka 25)",
-      "image": "assets/images/meeting/1792613184290.jpg",
-      "badgeText": "30.10",
-      "description": "Serdecznie zapraszamy na konferencję z cyklu Radość Życia: „Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”. Prowadzi dr Iwona Niedbalska.",
-      "contentHtml": "<p>Serdecznie zapraszamy na wartościową konferencję z cyklu <strong>Radość Życia</strong>!</p><h4>TEMAT:</h4><p>„Jak zbudować i utrzymać dobre relacje w rodzinie? Na co naprawdę mamy wpływ?”</p><h4>Szczegóły spotkania:</h4><ul><li><strong>Kiedy:</strong> Piątek, 30 października 2026 r., po Mszy św. o godz. 18:30</li><li><strong>Gdzie:</strong> Parafia pw. św. Jadwigi Śląskiej, Wrocław Kozanów (ul. Pilczycka 25)</li><li><strong>Prelegent:</strong> dr Iwona Niedbalska – lekarz pediatra, doradca życia rodzinnego</li></ul>"
+      "title": "Spotkanie Wspólnoty Rodzin – św. Jadwiga Kozanów",
+      "dateText": "Piątek, 13 Listopada 2026 r. – po Mszy Świętej o godz. 18:00 (salka parafialna)",
+      "locationText": "Salka parafialna pod kościołem św. Jadwigi Śląskiej (Wrocław – Kozanów)",
+      "image": "assets/images/meeting/spotkanie-pazdziernik-detail.png",
+      "badgeText": "13.11",
+      "description": "Serdecznie zapraszamy wszystkie rodziny, małżeństwa i sympatyków na kolejne spotkanie Wspólnoty Rodzin w piątek, 13 listopada 2026 r. po Mszy Świętej o godz. 18:00 w salce parafialnej.",
+      "contentHtml": "<h4>Serdecznie zapraszamy na spotkanie Wspólnoty Rodzin!</h4><p>Drogie Rodziny, Małżeństwa oraz wszyscy Przyjaciele i Sympatycy naszej Wspólnoty! Zapraszamy do wspólnego spędzenia czasu, modlitwy oraz budowania serdecznych więzi w duchu wiary i chrześcijańskiej miłości.</p><h4>Szczegóły spotkania:</h4><ul><li><strong>Kiedy:</strong> Piątek, 13 Listopada 2026 r. – po Mszy Świętej o godz. 18:00</li><li><strong>Gdzie:</strong> Salka parafialna pod kościołem św. Jadwigi Śląskiej na Kozanowie (ul. Pilczycka 25)</li></ul><h4>W programie:</h4><ul><li>Wspólna modlitwa i chwila wyciszenia,</li><li>Wartościowa konferencja i rozmowy w gronie małżonków i rodziców,</li><li>Zabawy i opieka dla dzieci,</li><li>Serdeczny poczęstunek przy kawie, herbacie i domowych wypiekach – czas na swobodne rozmowy i wzajemne wsparcie.</li></ul><p>Zapraszamy z całego serca! Bo rodzina to wielki dar!</p><figure class=\"modal-featured-figure\" style=\"margin-top: 24px;\"><img src=\"assets/images/meeting/spotkanie-pazdziernik-detail.png\" alt=\"Plakat spotkania Wspólnoty Rodzin\" class=\"modal-featured-img\" /></figure>"
     }
   },
   "pillars": [
@@ -42,12 +42,25 @@ window.COMMUNITY_DATA = {
     {
       "id": "termin",
       "title": "NASTĘPNE SPOTKANIE",
-      "subtitle": "Piątek, 30 października, 18:30",
+      "subtitle": "Piątek, 13 listopada, 18:00",
       "description": "Nasze spotkania są otwarte dla każdego. Przyjdź i zobacz – czekamy na Ciebie i Twoją rodzinę w salce parafialnej!",
       "icon": "calendar"
     }
   ],
   "news": [
+    {
+      "id": 19376,
+      "title": "Spotkanie Wspólnoty Rodzin: 13 listopada 2026 r.",
+      "date": "2026-11-04",
+      "author": "Wspólnota Rodzin",
+      "slug": "spotkanie-wspolnoty-rodzin-13-listopada-2026-r",
+      "featuredImage": "assets/news/19376/spotkanie-pazdziernik-detail.png",
+      "isVideo": false,
+      "excerpt": "Serdecznie zapraszamy na kolejne spotkanie Wspólnoty Rodzin w piątek, 13 listopada 2026 r. po Mszy Świętej o godz. 18:00 w salce parafialnej.",
+      "contentHtml": "<p class=\"article-lead\">Drogie Rodziny, Małżeństwa oraz wszyscy Przyjaciele i Sympatycy naszej Wspólnoty!</p><p>Z radością zapraszamy na kolejne wspólne spotkanie formacyjne i integracyjne Wspólnoty Rodzin. Serdecznie zapraszamy do wspólnego spędzenia czasu, modlitwy oraz budowania serdecznych więzi w duchu wiary i chrześcijańskiej miłości.</p><div class=\"meeting-schedule-box\" style=\"background: rgba(199, 93, 44, 0.06); border-left: 4px solid #c75d2c; padding: 14px 18px; margin: 18px 0; border-radius: 0 8px 8px 0;\"><h4 style=\"margin: 0 0 10px 0; color: #2c2420; font-size: 1.05rem;\">Termin i miejsce spotkania:</h4><ul style=\"margin: 0; padding-left: 20px; line-height: 1.6;\"><li><strong>Piątek, 13 Listopada 2026 r.</strong> – po Mszy Świętej o godz. 18:00 (salka parafialna).</li><li>Parafia pw. św. Jadwigi Śląskiej, Wrocław Kozanów (ul. Pilczycka 25).</li></ul></div><p>Spotkanie rozpoczynamy uczestnictwem we Mszy Świętej, po której przechodzimy do salki parafialnej pod kościołem św. Jadwigi Śląskiej na Kozanowie.</p><h4>W programie spotkania:</h4><ul><li>Wspólna modlitwa i chwila wyciszenia,</li><li>Wartościowa konferencja i dyskusja w gronie małżonków i rodziców,</li><li>Zabawy i opieka dla dzieci,</li><li>Serdeczny poczęstunek przy kawie, herbacie i domowych wypiekach – czas na swobodne rozmowy i wzajemne wsparcie.</li></ul><p>Zapraszamy z całego serca zarówno rodziny, które są z nami od lat, jak i te, które chciałyby nas poznać po raz pierwszy.<br><strong>Bo rodzina to wielki dar!</strong></p><figure class=\"modal-featured-figure\" style=\"margin-top: 24px;\"><img src=\"assets/images/meeting/spotkanie-pazdziernik-detail.png\" alt=\"Plakat spotkania Wspólnoty Rodzin\" class=\"modal-featured-img\" /></figure>",
+      "sourceUrl": "",
+      "attachments": []
+    },
     {
       "id": 19375,
       "title": "Konferencja z cyklu Radość Życia: Jak zbudować i utrzymać dobre relacje w rodzinie?",

@@ -99,9 +99,10 @@ def update_meeting(args):
         if src.exists():
             MEETING_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
             dest = MEETING_ASSETS_DIR / src.name
-            shutil.copy2(src, dest)
+            if src != dest:
+                shutil.copy2(src, dest)
+                print(f"Copied meeting image to {dest}")
             image_path = f"assets/images/meeting/{dest.name}"
-            print(f"Copied meeting image to {image_path}")
         elif (ROOT_DIR / args.image).exists():
             image_path = args.image
         else:
