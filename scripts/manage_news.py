@@ -152,7 +152,14 @@ def add_news(args):
     data = load_data()
     news = data.get("news", [])
 
-    new_id = generate_new_id(news)
+    new_id = getattr(args, 'id', None)
+    if new_id is not None:
+        try:
+            new_id = int(new_id)
+        except ValueError:
+            pass
+    else:
+        new_id = generate_new_id(news)
     title = args.title.strip()
     date_str = args.date.strip() if args.date else date.today().isoformat()
     if not re.match(r"^\d{4}-\d{2}-\d{2}$", date_str):
@@ -375,6 +382,7 @@ def main():
 
     # add
     p_add = subparsers.add_parser("add", help="Add a new news article")
+    p_add.add_argument("--id", help="Explicit ID for the article (numeric or string)")
     p_add.add_argument("--title", required=True, help="Title of the news article")
     p_add.add_argument("--date", help="Publication date (YYYY-MM-DD, defaults to today)")
     p_add.add_argument("--author", default="Wspólnota Rodzin", help="Author name")
