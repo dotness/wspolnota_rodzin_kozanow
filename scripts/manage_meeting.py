@@ -140,6 +140,17 @@ def update_meeting(args):
         "contentHtml": content_html
     }
 
+    # Keep pillar 'termin' subtitle in sync
+    for pil in data.get("pillars", []):
+        if pil.get("id") == "termin":
+            m_day = re.search(r'(\d{1,2})\s*([a-ząćęłńóśźż]+)', date_text.lower())
+            m_time = re.search(r'(\d{1,2}:\d{2})', date_text)
+            time_part = f", {m_time.group(1)}" if m_time else ""
+            if m_day and m_day.group(2) in MONTH_MAP:
+                weekday_match = re.search(r'^(poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela)', date_text.lower())
+                weekday_str = weekday_match.group(1).capitalize() if weekday_match else "Piątek"
+                pil["subtitle"] = f"{weekday_str}, {m_day.group(1)} {m_day.group(2)}{time_part}"
+
     save_data(data)
     print(f"\n✅ Next meeting updated successfully!")
     print(f"   Title: {title}")
